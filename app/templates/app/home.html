@@ -1,0 +1,51 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class="home">
+	<h2>Auctions</h2>
+	<div class="filter">
+		<div class="filter-section">
+			<ul>
+				<li>Brand <i class="fas fa-chevron-down"></i>
+					<ul>
+						<li>All</li>
+						<li>Toyota</li>
+						<li>Ford</li>
+						<li>Honda</li>
+					</ul>
+				</li>
+				<li>Transmission <i class="fas fa-chevron-down"></i>
+					<ul>
+						<li>All</li>
+						<li>Auto</li>
+						<li>Menual</li>
+					</ul></li>
+				<li>Body Style <i class="fas fa-chevron-down"></i>
+					<ul>
+						<li>All</li>
+						<li>Coupe</li>
+						<li>Convertible</li>
+						<li>Sedan</li>
+						<li>Hatchback</li>
+						<li>SUV/CUV</li>
+						<li>Truck</li>
+						<li>Van/Minivan</li>
+						<li>Wagon</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="sort">
+			<ul>
+				<li class="active">Ending soon</li>
+				<li>Newly listed</li>
+				<li>Low mileage</li>
+			</ul>
+		</div>
+	</div>
+	<div class="cars">
+		
+	</div>
+</div>
+{% endblock content %}

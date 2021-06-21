@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<div class="signup">
+	<form action="#" autocomplete="off">
+		<h1>Sign in <span class="error"></span> </h1>
+		<div class="inner-container">
+			<div class="left">
+				<label for="username">Usename</label> <br>
+				<input id="username" type="text" name="username"> <br>
+				<label for="password">Password</label> <br>
+				<input id="password" type="password" name="password">
+				<i id="show-password" class="fas fa-eye-slash"></i>
+				<br>
+			</div>
+		</div>
+		<button type="submit"> Sign in</button>
+	</form>
+	<script type="text/javascript" src="{% static 'js/signin.js' %}"></script>
+</div>
+{% endblock content %}

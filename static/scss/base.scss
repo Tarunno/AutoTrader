@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Satisfy&display=swap');
+
+$sans-serif: 'Roboto', sans-serif;
+$cursive: 'Satisfy', cursive;
+$brand-color: #c58aff;
+$brand-color-secondary: #ebd6ff;
+$font-color-primary: #262626;
+$font-color-secondary: #7d7d7d;
+
+@mixin flex($justify-content:center, $align-items:center, $flex-direction:row, $gap:15px){
+	display: flex;
+	justify-content: $justify-content;
+	align-items: $align-items;
+	flex-direction: $flex-direction;
+	gap: $gap;
+}
+
+@mixin height-width($height, $width){
+	height: $height;
+	width: $width;
+}
+
+@mixin top-left-right($top, $left, $right:false){
+	@if $right{
+		right: $right;
+	}
+	left: $left;
+	top: $top;
+}
+
+@mixin responsive-width($width, $min:false){
+	width: 100%;
+	@if $min{
+		min-width: $width;
+	}
+	@else{
+		max-width: $width;
+	}
+}
+
+@mixin center{
+	display: grid;
+	place-items: center;
+}
+
+@mixin container{
+	width: 100%;
+	max-width: 1540px;
+	margin: auto;
+	padding: 0px 40px;
+	@media (min-width: 1560px){
+		@content;
+	}
+}
+
+::-webkit-scrollbar{
+	width: 10px;
+	background-color: white;
+}
+::-webkit-scrollbar-thumb{
+	border-radius: 20px;
+	background-color: $brand-color-secondary;
+	&:hover{
+		background-color: $brand-color;
+	}
+}
+
+body{
+	margin: 0px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	*{
+		margin: 0px;
+		padding: 0px;
+		box-sizing: border-box;
+		font-family: $sans-serif;
+		color: $font-color-primary;
+	}
+	a{
+		text-decoration: none;
+		color: $font-color-primary;
+	}
+}
+
+header{
+	@include container;
+	@include flex(space-between);
+	@include height-width(90px, 100%);
+	border-bottom: 1px solid #f4f4f4;
+	position: fixed;
+	background-color: white;
+	top: 0px;
+	z-index: 100;
+	margin: auto;
+	.logo{
+		width: fit-content;
+		h1{
+			font-family: $cursive;
+			font-size: 40px;
+			span{
+				color: $brand-color;
+				font-family: $cursive;
+			}
+		}
+	}
+	nav{
+		justify-self: flex-start;
+		@include responsive-width(250px, true);
+		ul{
+			li{
+				display: inline;
+				a{
+					padding: 10px;
+					font-weight: 600;
+					color: $font-color-primary;
+					&:hover{
+						color: $font-color-secondary;
+					}
+				}
+			}
+			.emphasize{
+				background-color: $brand-color;
+				border-radius: 20px;
+			}
+		}
+		.mob-content{
+			display: none;
+		}
+	}
+	.search{
+		@include responsive-width(500px);
+		justify-self: flex-end;
+		form{
+			@include responsive-width(500px);
+			@include flex();
+			padding-left: 20px;
+			border-radius: 10px;
+			background-color: #f4f4f4;
+			input{
+				@include responsive-width(500px);
+				padding: 18px;
+				border: none;
+				background: transparent;
+				&::placeholder{
+					font-size: 15px;
+				}
+				&:focus{
+					outline: none;
+				}
+			}
+			i{
+				font-size: 15px;
+				color: $font-color-secondary;
+				margin-right: -10px;
+			}
+		}
+	}
+	.signup-btn{
+		padding: 15px;
+		background-color: $brand-color;
+		color: $font-color-primary;
+		font-weight: 700;
+		margin-left: 10px;
+		border-radius: 10px;
+		&:hover{
+			color: $font-color-secondary;
+		}
+		&:focus{
+			outline: none;
+		}
+	}
+	#humburger-menu{
+		display: none;
+	}
+}
+
+footer{
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-auto-rows: 150px;
+	grid-gap: 20px;
+	background-color: $brand-color-secondary;
+	padding: 40px;
+	.logo{
+		width: fit-content;
+		padding-right: 40px;
+		h1{
+			font-family: $cursive;
+			font-size: 30px;
+			span{
+				color: $brand-color;
+				font-family: $cursive;
+			}
+		}
+		p{
+			font-size: 10px;
+			color: $font-color-secondary;
+		}
+	}
+	.section{
+		li, p{
+			list-style: none;
+			font-weight: 500;
+			color: $font-color-secondary;
+			margin-top: 10px;
+			font-size: 15px;
+			&:hover{
+				color: $font-color-primary;
+				cursor: pointer;
+			}
+		}
+		p{
+			font-size: 13px;
+		}
+		.heading{
+			font-weight: 700;
+			pointer-events: none;
+		}
+		i{
+			font-size: 20px;
+			margin-right: 7px;
+			margin-top: 10px;
+			border-radius: 30px;
+			color: $font-color-secondary;
+		}
+	}
+}
+
+@media (min-width: 1560px){
+	header{
+		@include container{
+			padding: 0px;
+		}
+	}
+}
+@media screen and (max-width: 800px){
+	header{
+		nav{
+			padding: 20px;
+			display: none;
+			position: fixed;
+			top: 90px;
+			left: 0px;
+			width: 100%;
+			height: calc(100vh - 90px);
+			background-color: white;
+			ul{
+				@include height-width(100%, 100%);
+				max-width: 500px;
+				margin: auto;
+				@include flex(flex-start, flex-start, column, 20px);
+				li{
+					display: block;
+				}
+			}
+			.mob-content{
+				@include flex(flex-start, flex-start, column, 20px);
+				width: 100%;
+				.search{
+					display: block;
+				}
+				.signup-btn{
+					display: block;
+					margin: 0px;
+					max-width: 500px;
+				}
+			}
+			.mob-overlay{
+				padding: 20px;
+				@include flex(flex-start, flex-start, column, 20px);
+				width: 100%;
+				border-radius: 10px;
+				background-color: #f4f4f4;
+			}
+		}
+		.signup-btn{
+			display: none;
+		}
+		.search{
+			display: none;
+		}
+		#humburger-menu{
+			display: inline;
+			font-size: 30px;
+		}
+	}
+	footer{
+		grid-template-columns: repeat(2, 1fr);
+		grid-auto-rows: fit-content;
+		background-color: $brand-color-secondary;
+		height: fit-content;
+		width: 100%;
+		a{
+			grid-column: 1 / 3;
+		}
+		.section{
+			transform: translateY(-90px);
+		}
+	}
+}
+@media screen and (max-width: 400px){
+	footer{
+		grid-template-columns: repeat(1, 1fr);
+		grid-auto-rows: fit-content;
+		background-color: $brand-color-secondary;
+		height: fit-content;
+		a{
+			grid-column: 1 / 2;
+		}
+		.section{
+			transform: translateY(-90px);
+		}
+	}
+}

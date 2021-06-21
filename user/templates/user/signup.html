@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<div class="signup">
+	<form action="#" autocomplete="off">
+		<h1>Sign up <span class="error"></span> </h1>
+		<p>Already have an account? <a href="{% url 'signin' %}">Sign in!</a></p>
+		<div class="inner-container">
+			<div class="left">
+				<label for="username">Usename</label> <br>
+				<input id="username" type="text" name="username"> <br>
+				<label for="first_name">First name</label> <br>
+				<input id="first_name" type="text" name="first_name"> <br>
+				<label for="password">Password</label> <br>
+				<input id="password" type="password" name="password"> <br>
+			</div>
+			<div class="right">
+				<label for="email">Email</label> <br>
+				<input type="email" id="email" name="email"> <br>
+				<label for="last_name">Last name</label> <br>
+				<input id="last_name" type="text" name="last_name"> <br>
+				<label for="repassword">Re-enter password</label> <br>
+				<input id="repassword" type="password" name="repassword"> <br>
+			</div>
+		</div>
+		<button type="submit"> Sign up</button>
+	</form>
+	<script type="text/javascript" src="{% static 'js/signup.js' %}"></script>
+</div>
+{% endblock content %}

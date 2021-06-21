@@ -1,0 +1,428 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Satisfy&display=swap");
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #ebd6ff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c58aff;
+}
+
+body {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+body * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  color: #262626;
+}
+body a {
+  text-decoration: none;
+  color: #262626;
+}
+
+header {
+  width: 100%;
+  max-width: 1540px;
+  margin: auto;
+  padding: 0px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid #f4f4f4;
+  position: fixed;
+  background-color: white;
+  top: 0px;
+  z-index: 100;
+  margin: auto;
+}
+header .logo {
+  width: fit-content;
+}
+header .logo h1 {
+  font-family: "Satisfy", cursive;
+  font-size: 40px;
+}
+header .logo h1 span {
+  color: #c58aff;
+  font-family: "Satisfy", cursive;
+}
+header nav {
+  justify-self: flex-start;
+  width: 100%;
+  min-width: 250px;
+}
+header nav ul li {
+  display: inline;
+}
+header nav ul li a {
+  padding: 10px;
+  font-weight: 600;
+  color: #262626;
+}
+header nav ul li a:hover {
+  color: #7d7d7d;
+}
+header nav ul .emphasize {
+  background-color: #c58aff;
+  border-radius: 20px;
+}
+header nav .mob-content {
+  display: none;
+}
+header .search {
+  width: 100%;
+  max-width: 500px;
+  justify-self: flex-end;
+}
+header .search form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+  padding-left: 20px;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+}
+header .search form input {
+  width: 100%;
+  max-width: 500px;
+  padding: 18px;
+  border: none;
+  background: transparent;
+}
+header .search form input::placeholder {
+  font-size: 15px;
+}
+header .search form input:focus {
+  outline: none;
+}
+header .search form i {
+  font-size: 15px;
+  color: #7d7d7d;
+  margin-right: -10px;
+}
+header .signup-btn {
+  padding: 15px;
+  background-color: #c58aff;
+  color: #262626;
+  font-weight: 700;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+header .signup-btn:hover {
+  color: #7d7d7d;
+}
+header .signup-btn:focus {
+  outline: none;
+}
+header #humburger-menu {
+  display: none;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 150px;
+  grid-gap: 20px;
+  background-color: #ebd6ff;
+  padding: 40px;
+}
+footer .logo {
+  width: fit-content;
+  padding-right: 40px;
+}
+footer .logo h1 {
+  font-family: "Satisfy", cursive;
+  font-size: 30px;
+}
+footer .logo h1 span {
+  color: #c58aff;
+  font-family: "Satisfy", cursive;
+}
+footer .logo p {
+  font-size: 10px;
+  color: #7d7d7d;
+}
+footer .section li, footer .section p {
+  list-style: none;
+  font-weight: 500;
+  color: #7d7d7d;
+  margin-top: 10px;
+}
+footer .section li:hover, footer .section p:hover {
+  color: #262626;
+  cursor: pointer;
+}
+footer .section .heading {
+  font-weight: 700;
+  pointer-events: none;
+}
+footer .section i {
+  font-size: 30px;
+  margin-right: 10px;
+  border-radius: 30px;
+  color: #7d7d7d;
+}
+
+@media (min-width: 1560px) {
+  header {
+    width: 100%;
+    max-width: 1540px;
+    margin: auto;
+    padding: 0px 40px;
+  }
+}
+@media (min-width: 1560px) and (min-width: 1560px) {
+  header {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 800px) {
+  header nav {
+    padding: 20px;
+    display: none;
+    position: fixed;
+    top: 90px;
+    left: 0px;
+    width: 100%;
+    height: calc(100vh - 90px);
+    background-color: white;
+  }
+  header nav ul {
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  header nav ul li {
+    display: block;
+  }
+  header nav .mob-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  header nav .mob-content .search {
+    display: block;
+  }
+  header nav .mob-content .signup-btn {
+    display: block;
+    margin: 0px;
+    max-width: 500px;
+  }
+  header nav .mob-overlay {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+  }
+  header .signup-btn {
+    display: none;
+  }
+  header .search {
+    display: none;
+  }
+  header #humburger-menu {
+    display: inline;
+    font-size: 30px;
+  }
+
+  footer {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: fit-content;
+    background-color: #ebd6ff;
+    height: fit-content;
+    width: 100%;
+  }
+  footer a {
+    grid-column: 1/3;
+  }
+  footer .section {
+    transform: translateY(-90px);
+  }
+}
+@media screen and (max-width: 400px) {
+  footer {
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: fit-content;
+    background-color: #ebd6ff;
+    height: fit-content;
+  }
+  footer a {
+    grid-column: 1/2;
+  }
+  footer .section {
+    transform: translateY(-90px);
+  }
+}
+#show-password {
+  float: right;
+  margin-top: -34px;
+  margin-right: 20px;
+  position: relative;
+  z-index: 10;
+  color: #7d7d7d;
+  font-weight: lighter;
+  font-size: 20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.signup {
+  width: 100%;
+  max-width: 1540px;
+  margin: auto;
+  padding: 0px 40px;
+  height: fit-content;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.signup .error {
+  font-size: 15px;
+  color: red;
+  font-weight: 500;
+  padding: 5px;
+  position: relative;
+  top: -4px;
+}
+.signup p {
+  color: #262626;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.signup p a {
+  color: #262626;
+  font-weight: 600px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-left: 5px;
+  background-color: #ebd6ff;
+}
+.signup p a:hover {
+  background-color: #c58aff;
+}
+.signup form {
+  padding: 40px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 700px;
+}
+.signup form .inner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: -10px;
+}
+.signup form .inner-container .left, .signup form .inner-container .right {
+  width: 100%;
+  margin: 10px 0px;
+}
+.signup form .inner-container .left label, .signup form .inner-container .right label {
+  position: relative;
+  top: 28px;
+  left: 10px;
+  color: #7d7d7d;
+  transition: 0.3s;
+  font-weight: 500;
+  font-size: 15px;
+}
+.signup form .inner-container .left input, .signup form .inner-container .right input {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+.signup form .inner-container .left input:focus, .signup form .inner-container .right input:focus {
+  outline: none;
+}
+.signup form button {
+  padding: 10px;
+  background-color: #c58aff;
+  color: #262626;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+.signup form button:hover {
+  color: #7d7d7d;
+}
+.signup form button:focus {
+  outline: none;
+}
+
+@media (min-width: 1560px) {
+  .signup {
+    width: 100%;
+    max-width: 1540px;
+    margin: auto;
+    padding: 0px 40px;
+  }
+}
+@media (min-width: 1560px) and (min-width: 1560px) {
+  .signup {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .signup {
+    height: 750px;
+    padding: 0px 20px;
+  }
+  .signup form {
+    padding: 20px;
+  }
+  .signup form .inner-container {
+    flex-direction: column;
+    gap: 0px;
+  }
+  .signup form .inner-container .right {
+    margin-top: -10px;
+  }
+}
+
+/*# sourceMappingURL=signup.css.map */

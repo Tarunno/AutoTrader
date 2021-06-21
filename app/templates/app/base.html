@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css"  />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+	<title>Cars & Bids</title>
+</head>
+	<body>
+		<header>
+			<a href="{% url 'home' %}">
+				<div class="logo">
+					<h1>Cars<span>&</span>Bids</h1>
+				</div>
+			</a>
+			<nav>
+				<ul>
+					<div class="mob-content">
+						<div class="search">
+							<form action="#">
+								<i class="fas fa-search"></i>
+								<input type="text" name="search" placeholder="Search for cars (ex. BMW, Audi, Ford)">
+							</form>
+						</div>
+						<a class="signup-btn" href="{% url 'signup' %}">Signup</a>
+					</div>
+					<div class="mob-overlay">
+						<li><a href="">Auctions</a></li>
+						<li><a class="emphasize" href="">Sell a Car</a></li>
+						<li><a href="">About</a></li>
+					</div>
+				</ul>
+			</nav>
+			<div class="search">
+				<form action="#">
+					<i class="fas fa-search"></i>
+					<input type="text" name="search" placeholder="Search for cars (ex. BMW, Audi, Ford)">
+				</form>
+			</div>
+			<a class="signup-btn" href="{% url 'signup' %}">Signup</a>
+			<i id="humburger-menu" class="fas fa-bars"></i>
+		</header>
+		{% block content %}
+		{% endblock content %}
+		<footer>
+			<a href="{% url 'home' %}">
+				<div class="logo">
+					<h1>Cars<span>&</span>Bids</h1>
+					<p>Auction your modern enthusiast car
+					anything cool and exciting from the 1980s to the 2020s.</p>
+				</div>
+			</a>
+			<div class="section">
+				<ul>
+					<li class='heading'>HOW IT WORKS</li>
+					<li>Buying a Car</li>
+					<li>Selling a Car</li>
+					<li>Finalizing the Sale</li>
+					<li>FAQs</li>
+				</ul>
+			</div>
+			<div class="section">
+				<ul>
+					<li class='heading'>SELLERS</li>
+					<li>Submit Your Car</li>
+					<li>Photography Guide</li>
+				</ul>
+			</div>
+			<div class="section">
+				<ul>
+					<li class='heading'>HELPFUL LINKS</li>
+					<li>Support</li>
+					<li>Shop C&B Merch</li>
+				</ul>
+			</div>
+			<div class="section">
+				<i class="fab fa-youtube"></i>
+				<i class="fab fa-facebook"></i>
+				<i class="fab fa-twitter"></i>
+				<p>© Copyright 2021 Cars and Bids LLC</p>
+				<p>Terms of Use Privacy Policy</p>
+			</div>
+		</footer>
+		<script src="{% static 'js/base.js' %}" charset="utf-8"></script>
+	</body>
+</html>
