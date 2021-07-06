@@ -72,10 +72,10 @@ header nav ul li {
 header nav ul li a {
   padding: 10px;
   font-weight: 600;
-  color: #696969;
+  color: #262626;
 }
 header nav ul li a:hover {
-  color: #262626;
+  color: #7d7d7d;
 }
 header nav ul .emphasize {
   background-color: #c58aff;
@@ -116,25 +116,26 @@ header .search form input:focus {
 }
 header .search form i {
   font-size: 15px;
-  color: #696969;
+  color: #7d7d7d;
   margin-right: -10px;
 }
 header .signup-btn {
   padding: 15px;
   background-color: #c58aff;
-  color: #696969;
+  color: #262626;
   font-weight: 700;
   margin-left: 10px;
   border-radius: 10px;
 }
 header .signup-btn:hover {
-  color: #262626;
+  color: #7d7d7d;
 }
 header .signup-btn:focus {
   outline: none;
 }
 header #humburger-menu {
   display: none;
+  cursor: pointer;
 }
 
 footer {
@@ -159,40 +160,37 @@ footer .logo h1 span {
 }
 footer .logo p {
   font-size: 10px;
-  color: #696969;
+  color: #7d7d7d;
 }
 footer .section li, footer .section p {
   list-style: none;
   font-weight: 500;
-  color: #696969;
+  color: #7d7d7d;
   margin-top: 10px;
+  font-size: 15px;
 }
 footer .section li:hover, footer .section p:hover {
   color: #262626;
   cursor: pointer;
+}
+footer .section p {
+  font-size: 13px;
 }
 footer .section .heading {
   font-weight: 700;
   pointer-events: none;
 }
 footer .section i {
-  font-size: 30px;
-  margin-right: 10px;
+  font-size: 20px;
+  margin-right: 7px;
+  margin-top: 10px;
   border-radius: 30px;
-  color: #696969;
+  color: #7d7d7d;
 }
 
 @media (min-width: 1560px) {
   header {
-    width: 100%;
-    max-width: 1540px;
-    margin: auto;
-    padding: 0px 40px;
-  }
-}
-@media (min-width: 1560px) and (min-width: 1560px) {
-  header {
-    padding: 0px;
+    padding: 0;
   }
 }
 @media screen and (max-width: 800px) {
@@ -270,6 +268,12 @@ footer .section i {
   }
   footer .section {
     transform: translateY(-90px);
+  }
+}
+@media screen and (max-width: 450px) {
+  header {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 @media screen and (max-width: 400px) {

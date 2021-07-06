@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Satisfy&display=swap');
+
+$sans-serif: 'Roboto', sans-serif;
+$cursive: 'Satisfy', cursive;
+$brand-color: #c58aff;
+$brand-color-secondary: #ebd6ff;
+$font-color-primary: #262626;
+$font-color-secondary: #7d7d7d;
+
+@mixin flex($justify-content:center, $align-items:center, $flex-direction:row, $gap:15px){
+	display: flex;
+	justify-content: $justify-content;
+	align-items: $align-items;
+	flex-direction: $flex-direction;
+	gap: $gap;
+}
+
+@mixin height-width($height, $width){
+	height: $height;
+	width: $width;
+}
+
+@mixin top-left-right($top, $left, $right:false){
+	@if $right{
+		right: $right;
+	}
+	left: $left;
+	top: $top;
+}
+
+@mixin responsive-width($width, $min:false){
+	width: 100%;
+	@if $min{
+		min-width: $width;
+	}
+	@else{
+		max-width: $width;
+	}
+}
+
+@mixin center{
+	display: grid;
+	place-items: center;
+}
+
+@mixin container{
+	width: 100%;
+	max-width: 1540px;
+	margin: auto;
+	padding: 0px 40px;
+}
+
+::-webkit-scrollbar{
+	width: 10px;
+	background-color: white;
+}
+::-webkit-scrollbar-thumb{
+	border-radius: 20px;
+	background-color: $brand-color-secondary;
+	&:hover{
+		background-color: $brand-color;
+	}
+}
