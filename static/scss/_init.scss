@@ -1,63 +1,153 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Satisfy&display=swap');
-
 $sans-serif: 'Roboto', sans-serif;
 $cursive: 'Satisfy', cursive;
 $brand-color: #c58aff;
 $brand-color-secondary: #ebd6ff;
 $font-color-primary: #262626;
-$font-color-secondary: #7d7d7d;
+$font-color-secondary: #636363;
 
-@mixin flex($justify-content:center, $align-items:center, $flex-direction:row, $gap:15px){
+@mixin flex($justify-content:center, $align-items:center, $flex-direction:row, $gap:15px) {
 	display: flex;
 	justify-content: $justify-content;
 	align-items: $align-items;
 	flex-direction: $flex-direction;
 	gap: $gap;
 }
-
-@mixin height-width($height, $width){
+@mixin height-width($height, $width) {
 	height: $height;
 	width: $width;
 }
-
-@mixin top-left-right($top, $left, $right:false){
-	@if $right{
+@mixin top-left-right($top, $left, $right:false) {
+	@if $right {
 		right: $right;
 	}
 	left: $left;
 	top: $top;
 }
-
-@mixin responsive-width($width, $min:false){
+@mixin responsive-width($width, $min:false) {
 	width: 100%;
-	@if $min{
+	@if $min {
 		min-width: $width;
-	}
-	@else{
+	} @else {
 		max-width: $width;
 	}
 }
-
-@mixin center{
+@mixin center {
 	display: grid;
 	place-items: center;
 }
-
-@mixin container{
+@mixin container {
 	width: 100%;
 	max-width: 1540px;
 	margin: auto;
-	padding: 0px 40px;
+	padding: 0 40px;
+}
+@mixin car-card {
+	.car {
+		width: 100%;
+		height: fit-content;
+
+		a {
+			&:hover .image {
+				filter: brightness(90%);
+				transition: 0.3s;
+			}
+
+			&:hover .buttons {
+				opacity: 1;
+				transition: 0.2s;
+			}
+		}
+
+		.image {
+			width: 100%;
+			height: 200px;
+			border-radius: 5px;
+			position: relative;
+
+			.tag {
+				@include flex;
+				font-size: 13px;
+				width: fit-content;
+				background-color: $font-color-primary;
+				padding: 7px;
+				border-radius: 5px;
+				position: absolute;
+				left: 10px;
+				bottom: 10px;
+
+				i,
+				p {
+					color: white;
+					font-weight: 600;
+				}
+
+				#tag-name {
+					color: #ababab;
+				}
+			}
+
+			#tag {
+				background-color: crimson;
+
+				#tag-name {
+					color: #ededed;
+				}
+			}
+		}
+
+		.info {
+			@include flex(center, flex-start);
+
+			.texts {
+				padding: 10px 0;
+
+				h4 {
+					line-height: calc(15px * 1.618);
+					margin-bottom: 5px;
+				}
+
+				.description {
+					font-size: 13px;
+					line-height: calc(13px * 1.618);
+					margin-bottom: 5px;
+				}
+
+				.location {
+					font-size: 13px;
+					line-height: calc(13px * 1.6);
+					margin-bottom: 10px;
+					color: $font-color-secondary;
+				}
+			}
+
+			.buttons {
+				padding: 10px 0;
+				opacity: 0;
+
+				i {
+					font-size: 20px;
+					padding: 3px;
+
+					&:hover {
+						border-bottom: 3px solid $brand-color;
+					}
+				}
+			}
+		}
+	}
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
 	width: 10px;
 	background-color: white;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
 	border-radius: 20px;
 	background-color: $brand-color-secondary;
-	&:hover{
+
+	&:hover {
 		background-color: $brand-color;
 	}
 }

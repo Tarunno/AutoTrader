@@ -1,160 +1,190 @@
 @import "_init";
 
-body{
-	margin: 0px;
+body {
+	margin: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	min-height: 100vh;
-	*{
-		margin: 0px;
-		padding: 0px;
+
+	* {
+		margin: 0;
+		padding: 0;
 		box-sizing: border-box;
 		font-family: $sans-serif;
-		color: $font-color-primary;
 	}
-	a{
+
+	a {
 		text-decoration: none;
 		color: $font-color-primary;
 	}
 }
 
-header{
+header {
 	@include container;
 	@include flex(space-between);
 	@include height-width(90px, 100%);
 	border-bottom: 1px solid #f4f4f4;
 	position: fixed;
 	background-color: white;
-	top: 0px;
+	top: 0;
 	z-index: 100;
 	margin: auto;
-	.logo{
+
+	.logo {
 		width: fit-content;
-		h1{
+
+		h1 {
 			font-family: $cursive;
 			font-size: 40px;
-			span{
+
+			span {
 				color: $brand-color;
 				font-family: $cursive;
 			}
 		}
 	}
-	nav{
+
+	nav {
 		justify-self: flex-start;
 		@include responsive-width(250px, true);
-		ul{
-			li{
+
+		ul {
+			li {
 				display: inline;
-				a{
+
+				a {
 					padding: 10px;
 					font-weight: 600;
 					color: $font-color-primary;
-					&:hover{
+
+					&:hover {
 						color: $font-color-secondary;
 					}
 				}
 			}
-			.emphasize{
+
+			.emphasize {
 				background-color: $brand-color;
 				border-radius: 20px;
 			}
 		}
-		.mob-content{
+
+		.mob-content {
 			display: none;
 		}
 	}
-	.search{
+
+	.search {
 		@include responsive-width(500px);
 		justify-self: flex-end;
-		form{
+
+		form {
 			@include responsive-width(500px);
 			@include flex();
 			padding-left: 20px;
 			border-radius: 10px;
 			background-color: #f4f4f4;
-			input{
+
+			input {
 				@include responsive-width(500px);
 				padding: 18px;
 				border: none;
 				background: transparent;
-				&::placeholder{
+
+				&::placeholder {
 					font-size: 15px;
 				}
-				&:focus{
+
+				&:focus {
 					outline: none;
 				}
 			}
-			i{
+
+			i {
 				font-size: 15px;
 				color: $font-color-secondary;
 				margin-right: -10px;
 			}
 		}
 	}
-	.signup-btn{
+
+	.signup-btn {
 		padding: 15px;
 		background-color: $brand-color;
 		color: $font-color-primary;
 		font-weight: 700;
 		margin-left: 10px;
 		border-radius: 10px;
-		&:hover{
+
+		&:hover {
 			color: $font-color-secondary;
 		}
-		&:focus{
+
+		&:focus {
 			outline: none;
 		}
 	}
-	#humburger-menu{
+
+	#humburger-menu {
 		display: none;
 		cursor: pointer;
 	}
 }
 
-footer{
+footer {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-auto-rows: 150px;
 	grid-gap: 20px;
 	background-color: $brand-color-secondary;
 	padding: 40px;
-	.logo{
+
+	.logo {
 		width: fit-content;
 		padding-right: 40px;
-		h1{
+
+		h1 {
 			font-family: $cursive;
 			font-size: 30px;
-			span{
+
+			span {
 				color: $brand-color;
 				font-family: $cursive;
 			}
 		}
-		p{
+
+		p {
 			font-size: 10px;
 			color: $font-color-secondary;
 		}
 	}
-	.section{
-		li, p{
+
+	.section {
+		li,
+		p {
 			list-style: none;
 			font-weight: 500;
 			color: $font-color-secondary;
 			margin-top: 10px;
 			font-size: 15px;
-			&:hover{
+
+			&:hover {
 				color: $font-color-primary;
 				cursor: pointer;
 			}
 		}
-		p{
+
+		p {
 			font-size: 13px;
 		}
-		.heading{
+
+		.heading {
 			font-weight: 700;
 			pointer-events: none;
 		}
-		i{
+
+		i {
 			font-size: 20px;
 			margin-right: 7px;
 			margin-top: 10px;
@@ -163,45 +193,50 @@ footer{
 		}
 	}
 }
-
-@media (min-width: 1560px){
-	header{
+@media (min-width: 1560px) {
+	header {
 		padding: 0;
 	}
 }
-@media screen and (max-width: 800px){
-	header{
-		nav{
+@media screen and (max-width: 800px) {
+	header {
+		nav {
 			padding: 20px;
 			display: none;
 			position: fixed;
 			top: 90px;
-			left: 0px;
+			left: 0;
 			width: 100%;
 			height: calc(100vh - 90px);
 			background-color: white;
-			ul{
+
+			ul {
 				@include height-width(100%, 100%);
 				max-width: 500px;
 				margin: auto;
 				@include flex(flex-start, flex-start, column, 20px);
-				li{
+
+				li {
 					display: block;
 				}
 			}
-			.mob-content{
+
+			.mob-content {
 				@include flex(flex-start, flex-start, column, 20px);
 				width: 100%;
-				.search{
+
+				.search {
 					display: block;
 				}
-				.signup-btn{
+
+				.signup-btn {
 					display: block;
-					margin: 0px;
+					margin: 0;
 					max-width: 500px;
 				}
 			}
-			.mob-overlay{
+
+			.mob-overlay {
 				padding: 20px;
 				@include flex(flex-start, flex-start, column, 20px);
 				width: 100%;
@@ -209,47 +244,55 @@ footer{
 				background-color: #f4f4f4;
 			}
 		}
-		.signup-btn{
+
+		.signup-btn {
 			display: none;
 		}
-		.search{
+
+		.search {
 			display: none;
 		}
-		#humburger-menu{
+
+		#humburger-menu {
 			display: inline;
 			font-size: 30px;
 		}
 	}
-	footer{
+
+	footer {
 		grid-template-columns: repeat(2, 1fr);
 		grid-auto-rows: fit-content;
 		background-color: $brand-color-secondary;
 		height: fit-content;
 		width: 100%;
-		a{
+
+		a {
 			grid-column: 1 / 3;
 		}
-		.section{
+
+		.section {
 			transform: translateY(-90px);
 		}
 	}
 }
-@media screen and (max-width: 450px){
-	header{
+@media screen and (max-width: 450px) {
+	header {
 		padding-left: 20px;
 		padding-right: 20px;
 	}
 }
-@media screen and (max-width: 400px){
-	footer{
+@media screen and (max-width: 400px) {
+	footer {
 		grid-template-columns: repeat(1, 1fr);
 		grid-auto-rows: fit-content;
 		background-color: $brand-color-secondary;
 		height: fit-content;
-		a{
+
+		a {
 			grid-column: 1 / 2;
 		}
-		.section{
+
+		.section {
 			transform: translateY(-90px);
 		}
 	}

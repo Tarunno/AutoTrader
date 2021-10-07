@@ -133,7 +133,7 @@
   font-weight: 600;
 }
 .home main .cars .car .image .tag #tag-name {
-  color: gray;
+  color: #ababab;
 }
 .home main .cars .car .image #tag {
   background-color: crimson;
@@ -265,7 +265,7 @@
   font-weight: 600;
 }
 .home aside .new-cars .car .image .tag #tag-name {
-  color: gray;
+  color: #ababab;
 }
 .home aside .new-cars .car .image #tag {
   background-color: crimson;
@@ -312,8 +312,32 @@
 .home aside .new-cars h1 {
   margin-bottom: 10px;
 }
+.home aside .new-cars .car a .images {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  grid-gap: 5px;
+}
+.home aside .new-cars .car a .images .extra-images {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 5px;
+}
+.home aside .new-cars .car a .images .extra-images div:nth-child(1) {
+  height: 100%;
+  width: 100%;
+  border-radius: 0px 5px 0px 0px;
+}
+.home aside .new-cars .car a .images .extra-images div:nth-child(2) {
+  height: 100%;
+  width: 100%;
+  border-radius: 0px 0px 5px 0px;
+}
 .home aside .new-cars .car a .image {
   height: 160px;
+  border-radius: 5px 0px 0px 5px;
 }
 .home aside .new-cars .car a .info .texts ul {
   font-size: 10px;

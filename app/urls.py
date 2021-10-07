@@ -3,5 +3,6 @@ from django.contrib.auth.models import User
 from . import views
 
 urlpatterns = [
-    path('home/', views.home, name='home')
+    path('home/', views.home, name='home'),
+    path('car/', views.car, name='car')
 ]
