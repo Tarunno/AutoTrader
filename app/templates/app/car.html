@@ -116,9 +116,9 @@
 						<p><i class="far fa-clock"></i><span>Time Left</span> 12:32:02</p>
 						<p><span>High Bid</span> $15,500</p>
 						<p><span>Bids</span> 13</p>
-						<p><span>Comments</span> 11</p>
+						<p><span>Questions</span> 11</p>
 					</div>
-					<button class="place-bid-btn"> Place Bid </button>
+					<a href="{% url 'place-bid' 10 %}"><button class="place-bid-btn"> Place Bid </button></a>
 				</div>
 				<table>
 					<tr>
@@ -223,7 +223,7 @@
 						</ul>
 					</div>
 					<div class="question-answers">
-						<h2>Seller Q&A <span>(3)</span> <button>Ask a question</button></h2>
+						<h2>Seller Q&A <span>(3)</span> <button class="ask-question-btn">Ask a question</button></h2>
 						<div class="swiper mySwiper5">
 						      <div class="swiper-wrapper">
 						        <div class="swiper-slide">

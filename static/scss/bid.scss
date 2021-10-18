@@ -1,0 +1,78 @@
+@import '_init';
+
+.bid{
+	@include container;
+	padding-top: 120px;
+	@include height-width(fit-content, 100%);
+	main{
+		.bid-des{
+			min-height: calc(100vh - 400px);
+			@include flex(space-between, flex-start, row, 40px);
+		}
+		.car-info{
+			flex: 2;
+			@include flex(flex-start, flex-start);
+			min-height: 300px;
+			.car-image{
+				width: 500px;
+				height: 250px;
+				img{
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					border-radius: 10px;
+				}
+			}
+			.info{
+				@include flex(center, flex-start, column);
+				gap: 10px;
+			}
+			.ends-in{
+				padding: 10px;
+				border-radius: 10px;
+				background-color: crimson;
+				color: white;
+				width: fit-content;
+			}
+		}
+		.bid-info{
+			flex: 1.5;
+			@include flex(flex-start, flex-start, column);
+			min-height: 200px;
+			background-color: #ebebeb;
+			border-radius: 10px;
+			padding: 10px;
+			color: $font-color-primary;
+			h4{
+				margin-bottom: -15px;
+			}
+			h1{
+				font-size: 50px;
+				color: $brand-color;
+				text-shadow: 2px 2px 2px #111;
+			}
+			button{
+				width: 100%;
+				padding: 10px;
+				font-size: 20px;
+				font-family: $sans-serif;
+				font-weight: 600;
+				font-size: 20px;
+				border: 2px solid $brand-color;
+				border-radius: 5px;
+				&:hover{
+					color: white;
+					background-color: $brand-color;
+					cursor: pointer;
+				}
+			}
+			.buttons{
+				@include flex(center, center, row, 10px);
+				width: 100%;
+			}
+			.place-bid-btn{
+				background-color: $brand-color;
+			}
+		}
+	}
+}

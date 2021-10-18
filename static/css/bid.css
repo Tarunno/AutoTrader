@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Satisfy&display=swap");
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #ebd6ff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c58aff;
+}
+
+.bid {
+  width: 100%;
+  max-width: 1540px;
+  margin: auto;
+  padding: 0 40px;
+  padding-top: 120px;
+  height: fit-content;
+  width: 100%;
+}
+.bid main .bid-des {
+  min-height: calc(100vh - 400px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 40px;
+}
+.bid main .car-info {
+  flex: 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 15px;
+  min-height: 300px;
+}
+.bid main .car-info .car-image {
+  width: 500px;
+  height: 250px;
+}
+.bid main .car-info .car-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.bid main .car-info .info {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+  gap: 10px;
+}
+.bid main .car-info .ends-in {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: crimson;
+  color: white;
+  width: fit-content;
+}
+.bid main .bid-info {
+  flex: 1.5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 200px;
+  background-color: #ebebeb;
+  border-radius: 10px;
+  padding: 10px;
+  color: #262626;
+}
+.bid main .bid-info h4 {
+  margin-bottom: -15px;
+}
+.bid main .bid-info h1 {
+  font-size: 50px;
+  color: #c58aff;
+  text-shadow: 2px 2px 2px #111;
+}
+.bid main .bid-info button {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  border: 2px solid #c58aff;
+  border-radius: 5px;
+}
+.bid main .bid-info button:hover {
+  color: white;
+  background-color: #c58aff;
+  cursor: pointer;
+}
+.bid main .bid-info .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+.bid main .bid-info .place-bid-btn {
+  background-color: #c58aff;
+}
+
+/*# sourceMappingURL=bid.css.map */

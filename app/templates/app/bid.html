@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/bid.css' %}">
+<div class="bid">
+	<main>
+		<div class="bid-des">
+			<div class="car-info">
+				<div class="car-image">
+					<img src="https://www.cnet.com/a/img/-184Ixw7d29e-cxgFxFvidfWpq0=/1200x630/2008/02/24/cba933e8-f8fc-11e2-8c7c-d4ae52e62bcc/bmw-M3coupe-11.jpg">
+				</div>
+				<div class="info">
+					<h2>BMW M3 Coupe 2011</h2>
+					<p>6-Speed Manual, Florida-Owned, Highly Equipped</p>
+					<div class="ends-in">
+						<h4>1 Day 12 hours</h4>
+					</div>
+					<div class="last-bid">
+						<h4>Your last bid: $6500</h4>
+					</div>
+				</div>
+			</div>
+			<div class="bid-info">
+				<h4>Highest bid:</h4>
+				<h1>$7900</h1>
+				<div class="terms-and-policies">
+					<input type="checkbox" name="terms-and-policies" id="terms-and-policies">
+					<label for="terms-and-policies">I accept the terms and policies of the authorities</label>
+				</div>
+				<div class="buttons">
+					<button type="button" name="button"> Bid $8000 </button>
+					<button type="button" name="button"> Bid $8100 </button>
+				</div>
+				<button type="button" name="button" class="place-bid-btn">Place Bid</button>
+			</div>
+		</div>
+	</main>
+</div>
+{% endblock content %}
