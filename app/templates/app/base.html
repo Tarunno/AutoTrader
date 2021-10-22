@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="{% static 'css/base.css' %}">
-	<title>Cars & Bids</title>
+	<title>Cars & Bids {% if title is not None %} | {{title}} {% endif %}</title>
 </head>
 
 <body>
@@ -27,7 +27,11 @@
 							<input type="text" name="search" placeholder="Search for cars (ex. BMW, Audi, Ford)">
 						</form>
 					</div>
-					<a class="signup-btn" href="{% url 'signup' %}">Signup</a>
+					{% if user.is_authenticated %}
+						<a class="signup-btn" href="#">Profile</a>
+					{% else %}
+						<a class="signup-btn" href="{% url 'signup' %}">Signup</a>
+					{% endif %}
 				</div>
 				<div class="mob-overlay">
 					<li><a href="">Auctions</a></li>

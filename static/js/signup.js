@@ -1,10 +1,10 @@
 let input = document.querySelectorAll('.signup input')
 let label = document.querySelectorAll('.signup label')
 let form = document.querySelector('.signup form')
-let error = document.querySelector('.error')
+let errorMessage = document.querySelector('.error')
 
 handleInput(input, label)
-handleSubmit(form, input, error)
+handleSubmit(form, input, errorMessage)
 
 function handleInput(input, label){
 	input.forEach((el, index) => {
@@ -27,35 +27,60 @@ function handleInput(input, label){
 	})
 }
 
-function handleSubmit(form, input, error){
+function handleSubmit(form, input, errorMessage){
 	form.addEventListener('submit', (e) => {
 		e.preventDefault()
-		let errorFlag = false
-		let errorMessage = ''
-		if((input[2].value !== '' && input[5].value !=='') && (input[2].value !== input[5].value)){
-			errorFlag = true
-			errorMessage = `Two passwords didn't match`
-			input[2].style.background = 'rgba(255, 0, 0, .05)'
-			input[5].style.background = 'rgba(255, 0, 0, .05)'
-		}
-		else{
-			input.forEach((el) => {
-				if(el.value == ''){
-					el.style.background = 'rgba(255, 0, 0, .05)'
-					errorFlag = true
-					errorMessage = 'Empty fields'
-				} else {
-					el.style.background = 'white'
+		var formData = new FormData(form)
+		console.log(Array.from(formData))
+		const url = "/user/signup/"
+		fetch(url, {
+			method: "post",
+			body: formData
+		})
+		.then((res) => res.json())
+		.then((data) => {
+			let message = data.message
+			if(data.message == "success"){
+				input.forEach((field) => handleInputError(field, false, "", errorMessage))
+				errorMessage.innerHTML = "Account created success fully"
+				errorMessage.style.borderLeft = '2px solid green'
+				errorMessage.style.color = "green"
+				form.reset()
+			}
+			else{
+				let error = "";
+				let errorFields = [false, false, false, false, false, false]
+				console.log(message);
+				for(const [key, value] of Object.entries(message)){
+					input.forEach((field, index) => {
+						if(field.name == key){
+							handleInputError(field, true)
+							errorFields[index] = true
+							if(error == "") error = value
+						}
+					})
 				}
-			})
-		}
-		if(errorFlag){
-			error.innerHTML = errorMessage
-			error.style.borderLeft = '2px solid red'
-		}
-		else{
-			error.innerHTML = ''
-			error.style.borderLeft = 'none'
-		}
+				for(let i=0; i<6; i++){
+					if(errorFields[i] === false){
+						handleInputError(input[i], false)
+					}
+				}
+				console.log(error[0])
+				if(error[0] != ""){
+					errorMessage.innerHTML = error[0]
+					errorMessage.style.color = 'red'
+					errorMessage.style.borderLeft = '2px solid red'
+				}
+			}
+		})
 	})
+}
+
+function handleInputError(field, error ){
+	if(error){
+		field.style.background = 'rgba(255, 0, 0, .05)'
+	}
+	else{
+		field.style.background = 'white'
+	}
 }
