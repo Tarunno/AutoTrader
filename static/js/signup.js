@@ -42,7 +42,7 @@ function handleSubmit(form, input, errorMessage){
 			let message = data.message
 			if(data.message == "success"){
 				input.forEach((field) => handleInputError(field, false, "", errorMessage))
-				errorMessage.innerHTML = "Account created success fully"
+				errorMessage.innerHTML = "Account created successfully"
 				errorMessage.style.borderLeft = '2px solid green'
 				errorMessage.style.color = "green"
 				form.reset()

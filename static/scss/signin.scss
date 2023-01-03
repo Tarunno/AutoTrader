@@ -14,7 +14,7 @@
 	border-radius: 10px;
 }
 
-.signup{
+.signin{
 	@include container;
 	height: fit-content;
 	min-height: 100vh;
@@ -101,12 +101,12 @@
 }
 
 @media (min-width: 1560px){
-	.signup{
+	.signin{
 		padding: 0px;
 	}
 }
 @media screen and (max-width: 600px){
-	.signup{
+	.signin{
 		height: 750px;
 		padding: 0px 20px;
 		form{

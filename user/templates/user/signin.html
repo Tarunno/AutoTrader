@@ -1,8 +1,8 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/signup.css' %}">
-<div class="signup">
+<link rel="stylesheet" href="{% static 'css/signin.css' %}">
+<div class="signin">
 	<form action="#" autocomplete="off">
 		<h1>Sign in <span class="error"></span> </h1>
 		<div class="inner-container">
@@ -15,7 +15,8 @@
 				<br>
 			</div>
 		</div>
-		<button type="submit"> Sign in</button>
+		{% csrf_token %}
+		<button type="submit"> Sign in </button>
 	</form>
 	<script type="text/javascript" src="{% static 'js/signin.js' %}"></script>
 </div>

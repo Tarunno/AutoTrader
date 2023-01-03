@@ -5,7 +5,7 @@ from PIL import Image
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="customer/default.jpg", upload_to="customer/", null=True, blank=True)
-
+    
     def __str__(self):
          return self.user.username
 

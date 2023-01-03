@@ -1,0 +1,128 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<div class="profile">
+	<main>
+		<div class="user">
+			<div class="user-info">
+				<div class="image">
+					<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80">
+				</div>
+				<div class="info">
+					<p class="name"> Alexi Michel Molly </p>
+					<p class="email"> <i class="fas fa-envelope"> </i> aleximichel_molly@fakemail.com </p>
+					<p class="phone"> <i class="fas fa-phone"> </i> 01863987793 </p>
+					<p class="locaion"> <i class="fas fa-map-marker-alt"> </i> Agrabad, Chittagong, Bangladesh </p>
+				</div>
+			</div>
+			<div class="auction-info">
+				<div class="auction-posts">
+					<h1 class="count">12</h1>
+					<p class="count-name">Auction Posts</p>
+				</div>
+				<div class="auction-wins">
+					<h1 class="count">23</h1>
+					<p class="count-name">Auction Wins</p>
+				</div>
+				<div class="auction-loss">
+					<h1 class="count">3</h1>
+					<p class="count-name">Auction Loss</p>
+				</div>
+			</div>
+		</div>
+		<div class="add-car">
+			<form method="POST" enctype="multipart/form-data">
+				<h1>Add auction <span class="error"></span> </h1>
+				<div class="inner-container">
+					<div class="left">
+						<select id="make" name="make">
+							<option value="BMW"> BMW </option>
+							<option value="Toyota"> Toyota </option>
+							<option value="Honda"> Honda </option>
+							<option value="Ford"> Ford </option>
+						</select><br>
+						<label for="model">Model</label> <br>
+						<input id="model" type="text" name="model"> <br>
+						<label for="locaion">Location</label> <br>
+						<input id="location" type="text" name="location"> <br>
+						<label for="engine">Engine</label> <br>
+						<input id="engine" type="text" name="engine"> <br>
+						<select id="transmission" name="transmission">
+							<option value="Automatic"> Automatic </option>
+							<option value="Manual"> Manual </option>
+							<option value="Automatic-Menual"> Automatic with Menual </option>
+						</select><br>
+					</div>
+					<div class="middle">
+						<select id="body-style" name="body_style">
+							<option value="Coupe"> Coupe </option>
+							<option value="Convertible"> Convertible </option>
+							<option value="Sedan"> Sedan </option>
+							<option value="Hatchback"> Hatchback </option>
+							<option value="SUV/CUV"> SUV/CUV </option>
+							<option value="Truck"> Truck </option>
+							<option value="Wagon"> Wagon </option>
+						</select><br>
+						<label for="exterior-color">Exterior color</label> <br>
+						<input type="text" id="exterior-color" name="exterior_color"> <br>
+						<label for="interior-color">Interior color</label> <br>
+						<input type="text" id="interior-color" name="interior_color"> <br>
+						<label for="title-status:">Title status:</label> <br>
+						<input id="title-status:" type="text" name="title_status:"> <br>
+						<select id="transmission-speed" name="transmission_speed">
+							<option value="3"> 3-speed </option>
+							<option value="4"> 4-speed </option>
+							<option value="5"> 5-speed </option>
+							<option value="6"> 6-speed </option>
+							<option value="8"> 8-speed </option>
+						</select><br>
+					</div>
+					<div class="right">
+						<select id="drivetrain" name="drivetrain">
+							<option value="Rear-wheel"> Rear-wheel </option>
+							<option value="Front-wheel"> Front-wheel </option>
+							<option value="All-wheel"> All-wheel </option>
+						</select><br>
+						<label for="seller-note">Seller note</label> <br>
+						<input name="seller_note" id="seller-note"> <br>
+						<label for="vin">VIN</label> <br>
+						<input id="vin" type="text" name="vin"> <br>
+						<label for="mileage">Mileage</label> <br>
+						<input id="mileage" type="text" name="mileage"> <br>
+						<select id="seller-type" name="seller_type">
+							<option value="dealer"> Dealer </option>
+							<option value="customer"> Customer </option>
+						</select><br>
+					</div>
+				</div>
+				<label for="end-at">End at</label> <br>
+				<input type="datetime-local" name="end_at" id="end-at"> <br>
+				<div class="bottom">
+					<label for="highlight">Highlight</label> <br>
+					<textarea name="highlight" id="highlight"> </textarea> <br>
+					<label for="equipment">Equipment</label> <br>
+					<textarea name="equipment" id="equipment"> </textarea> <br>
+					<label for="modification">Modification</label> <br>
+					<textarea name="modification" id="modification"> </textarea> <br>
+					<label for="known-flaw">Known flaw</label> <br>
+					<textarea name="known_flaw" id="known-flaw"> </textarea> <br>
+					<label for="recent-service-history">Recent service history</label> <br>
+					<textarea name="recent_service_history" id="recent-service-history"> </textarea> <br>
+					<label for="ownership-history">Ownership history</label> <br>
+					<textarea name="ownership_history" id="ownership-history"> </textarea>
+				</div>
+				<div class="images">
+					<label for="exterior-images">Exterior images</label>
+					<input type="file" id="exterior-images" name="exterior_images" multiple placeholder="Chosose exterior images">
+					<label for="interior-images">Interior images</label>
+					<input type="file" id="interior-images" name="interior_images" multiple>
+				</div>
+				{% csrf_token %}
+				<button type="submit"> Add </button>
+			</form>
+		</div>
+	</main>
+	<script type="text/javascript" src="{% static 'js/profile.js' %}"></script>
+</div>
+{% endblock content %}

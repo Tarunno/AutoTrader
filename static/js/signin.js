@@ -1,11 +1,11 @@
-let input = document.querySelectorAll('.signup input')
-let label = document.querySelectorAll('.signup label')
-let form = document.querySelector('.signup form')
-let error = document.querySelector('.error')
+let input = document.querySelectorAll('.signin input')
+let label = document.querySelectorAll('.signin label')
+let form = document.querySelector('.signin form')
+let errorMessage = document.querySelector('.error')
 let showPasswordBtn = document.querySelector('#show-password')
 
 handleInput(input, label, showPasswordBtn)
-handleSubmit(form, input, error)
+handleSubmit(form, input, errorMessage)
 
 function handleInput(input, label){
 	let showPassword = false
@@ -44,24 +44,58 @@ function handleInput(input, label){
 function handleSubmit(form, input, error){
 	form.addEventListener('submit', (e) => {
 		e.preventDefault()
-		let errorFlag = false
-		let errorMessage = ''
-		input.forEach((el) => {
-			if(el.value == ''){
-				el.style.background = 'rgba(255, 0, 0, .05)'
-				errorFlag = true
-				errorMessage = 'Empty fields'
-			} else {
-				el.style.background = 'white'
+		var formData = new FormData(form)
+		console.log(Array.from(formData))
+		const url = "/user/signin/"
+		fetch(url, {
+			method: "post",
+			body: formData
+		})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			if(data.message == "success"){
+				input.forEach((field) => handleInputError(field, false, "", errorMessage))
+				errorMessage.innerHTML = "Logged in successfully"
+				errorMessage.style.borderLeft = '2px solid green'
+				errorMessage.style.color = "green"
+				form.reset()
+				window.location.replace('/user/profile/' + data.userID)
+			}
+			else{
+				let error = "";
+				let errorFields = [false, false]
+				console.log(message);
+				for(const [key, value] of Object.entries(message)){
+					input.forEach((field, index) => {
+						if(field.name == key){
+							handleInputError(field, true)
+							errorFields[index] = true
+							error = value
+						}
+					})
+				}
+				for(let i=0; i<2; i++){
+					if(errorFields[i] === false){
+						handleInputError(input[i], false)
+					}
+				}
+				console.log(error[0])
+				if(error[0] != ""){
+					errorMessage.innerHTML = error[0]
+					errorMessage.style.color = 'red'
+					errorMessage.style.borderLeft = '2px solid red'
+				}
 			}
 		})
-		if(errorFlag){
-			error.innerHTML = errorMessage
-			error.style.borderLeft = '2px solid red'
-		}
-		else{
-			error.innerHTML = ''
-			error.style.borderLeft = 'none'
-		}
 	})
+}
+
+function handleInputError(field, error ){
+	if(error){
+		field.style.background = 'rgba(255, 0, 0, .05)'
+	}
+	else{
+		field.style.background = 'white'
+	}
 }
