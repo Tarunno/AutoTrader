@@ -7,7 +7,8 @@ class Car(models.Model):
     MAKE = [('BMW', 'BMW'),
             ('Toyota', 'Toyota'),
             ('Ford', 'Ford'),
-            ('Honda', 'Honda')]
+            ('Honda', 'Honda'),
+            ('Jeep', 'Jeep')]
     BODY_STYLE = [('Coupe', 'Coupe'),
                   ('Convertible', 'Convertible'),
                   ('Sedan', 'Sedan'),

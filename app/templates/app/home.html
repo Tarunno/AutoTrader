@@ -14,6 +14,7 @@
 							<li>Toyota</li>
 							<li>Ford</li>
 							<li>Honda</li>
+							<li>Jeep</li>
 						</ul>
 					</li>
 					<li>Transmission <i class="fas fa-chevron-down"></i>
@@ -56,7 +57,7 @@
 					<a href="{% url 'car' car.id %}">
 						<div class="image" style="background: url(../{{related_object.image}}) no-repeat center center/cover">
 							<div class="tag" id="tag">
-								<p><i id="tag-name" class="far fa-clock"></i> {{car.end_at|timeuntil}}</p>
+								<p><i id="tag-name" class="far fa-clock"></i> <span class="time" id="{{car.id}}">{{car.time}}</span></p>
 								<p><span id="tag-name">Bid</span> <span class="bid-log" id="{{car.id}}">${{car.bid}}</span></p>
 							</div>
 						</div>
@@ -78,6 +79,48 @@
 			</div>
 			{{car.end_at|json_script:"end_time"}}
 			<script>
+				let countdownElements = document.querySelectorAll('.time')
+				let cars = document.querySelectorAll('.car')
+				let tags = document.querySelectorAll('.tag')
+
+				countdownElements.forEach((el, index) => {
+					updateCountdown(el, index)
+				})
+
+				function updateCountdown(el, index){
+					let countdownElement = el
+					var totalSeconds = parseInt(el.innerText)
+
+					var countdownInterval = setInterval(function() {
+						if (totalSeconds < 0) {
+							console.log(countdownElement.id);
+							fetch('/remove-bid/' + countdownElement.id + '/')
+							.then(res => res.json())
+							.then(data => console.log(data))
+							.catch(err => console.log(err))
+							countdownElement.innerText = 'Auction ended'
+							cars[index].style.display = 'none'
+							clearInterval(countdownInterval);
+						} else {
+							var remainingHours = Math.floor(totalSeconds / 3600);
+							var remainingMinutes = Math.floor((totalSeconds % 3600) / 60);
+							var remainingSeconds = totalSeconds % 60;
+
+							countdownElement.innerText = remainingHours.toString().padStart(2, "0") + ":" +
+																					 remainingMinutes.toString().padStart(2, "0") + ":" +
+																					 remainingSeconds.toString().padStart(2, "0")
+							if(totalSeconds < 3600){
+								tags[index].style.background = 'rgba(200, 30, 30, .8)'
+							}
+							else{
+								tags[index].style.background = 'rgba(0, 0, 0, 0.5);'
+							}
+
+							totalSeconds--;
+						}
+					}, 1000);
+				}
+	
 				let group_name = 'biders'
 				
 				let ws = new WebSocket('ws://' + window.location.host + '/ws/ac/' + group_name + '/')

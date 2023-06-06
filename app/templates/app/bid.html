@@ -16,10 +16,43 @@
 					<h2>{{car.make}} {{car.model}} {{car.body_style}}</h2>
 					<p>{{car.transmission_speed}}-speed {{car.transmission}}, {{car.location}}, Run {{car.mileage}}</p>
 					<div class="ends-in">
-						<h4>{{car.end_at|timeuntil}}</h4>
+						<h4><i class="far fa-clock"> </i> <span class="time" id="{{car.id}}"> {{car.time}}</span></h4>
 					</div>
 				</div>
 			</div>
+			<script>
+				let countdownElements = document.querySelectorAll('.time')
+	
+				countdownElements.forEach((el, index) => {
+					updateCountdown(el, index)
+				})
+
+				function updateCountdown(el, index){
+					let countdownElement = el
+					var totalSeconds = parseInt(el.innerText)
+
+					var countdownInterval = setInterval(function() {
+						if (totalSeconds < 0) {
+							console.log(countdownElement.id);
+							fetch('/remove-bid/' + countdownElement.id + '/')
+							.then(res => res.json())
+							.then(data => console.log(data))
+							.catch(err => console.log(err))
+							countdownElement.innerText = 'Auction ended'
+							clearInterval(countdownInterval);
+						} else {
+							var remainingHours = Math.floor(totalSeconds / 3600);
+							var remainingMinutes = Math.floor((totalSeconds % 3600) / 60);
+							var remainingSeconds = totalSeconds % 60;
+
+							countdownElement.innerText = remainingHours.toString().padStart(2, "0") + ":" +
+																					remainingMinutes.toString().padStart(2, "0") + ":" +
+																					remainingSeconds.toString().padStart(2, "0")
+							totalSeconds--;
+						}
+					}, 1000);
+				}
+				</script>
 			<div class="bid-info">
 				<h4>Highest bid:</h4>
 				<h1><span class="bid-log" id="{{car.id}}">${{car.bid}}</span></h1>

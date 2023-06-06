@@ -90,7 +90,7 @@
 			<div class="bid-info">
 				<div class="bid-info-bar">
 					<div class="info">
-						<p><i class="far fa-clock"></i><span>Time left</span> {{car.end_at|timeuntil}}</p>
+						<p><i class="far fa-clock"></i><span>Time left</span> <span class="time" id="{{car.id}}">{{car.time}}</span></p>
 						<p><span>High Bid</span> <span style="color:#fff" class="bid-log" id="{{car.id}}">${{car.bid}}</span></p>
 						<p><span>Bids</span> 13</p>
 						<p><span>Questions</span> 11</p>
@@ -98,10 +98,47 @@
 					<a href="{% url 'place-bid' car.id %}"><button class="place-bid-btn"> Place Bid </button></a>
 				</div>
 				<script>
+					let countdownElements = document.querySelectorAll('.time')
+		
+					countdownElements.forEach((el, index) => {
+						updateCountdown(el, index)
+					})
+
+					function updateCountdown(el, index){
+						let countdownElement = el
+						var totalSeconds = parseInt(el.innerText)
+
+						var countdownInterval = setInterval(function() {
+							if (totalSeconds < 0) {
+								console.log(countdownElement.id);
+								fetch('/remove-bid/' + countdownElement.id + '/')
+								.then(res => res.json())
+								.then(data => console.log(data))
+								.catch(err => console.log(err))
+								countdownElement.innerText = 'Auction ended'
+								clearInterval(countdownInterval);
+							} else {
+								var remainingHours = Math.floor(totalSeconds / 3600);
+								var remainingMinutes = Math.floor((totalSeconds % 3600) / 60);
+								var remainingSeconds = totalSeconds % 60;
+
+								countdownElement.innerText = remainingHours.toString().padStart(2, "0") + ":" +
+																						remainingMinutes.toString().padStart(2, "0") + ":" +
+																						remainingSeconds.toString().padStart(2, "0")
+								if(totalSeconds < 3600){
+									countdownElement.style.color = 'rgb(250, 46, 46)'
+								}
+								else{
+									countdownElement.style.color = '#fff'
+								}
+
+								totalSeconds--;
+							}
+						}, 1000);
+					}
+
 					let group_name = 'biders'
-					
 					let ws = new WebSocket('ws://' + window.location.host + '/ws/ac/' + group_name + '/')
-			
 					ws.onopen = function() {
 						console.log('WebScoket Connection open...')
 					}

@@ -35,7 +35,7 @@
 					<h4>Recent threads</h4>
 					{% for car in cars %}
 						{% with related_object=car.photo_set.first %}
-						<div style="display: flex; gap: 10px; font-size: 14px; width: 100%; justify-content: space-between; 
+						<div style="margin-top:10px; display: flex; gap: 10px; font-size: 14px; width: 100%; justify-content: space-between; 
 							background-color: #f0e4fd; padding: 10px; border-radius: 10px;">
 							<div style="display: flex; justify-content: space-between; flex-direction: row;">
 								<div class="image" style="margin-right:10px; width:100px; height:60px; border-radius:10px; background: url(../{{related_object.image}}) no-repeat center center/cover">
@@ -44,7 +44,7 @@
 									<p><i id="tag-name" class="far fa-clock"></i> {{car.end_at|timeuntil}}</p>
 									<p><span id="tag-name">Bid</span> <span class="bid-log" id="{{car.id}}">${{car.bid}}</span></p>
 									{% if car.on_auction %}
-										<i style="color: rgb(3, 78, 3); background-color:rgb(132, 255, 132); height: 10px;
+										<i style="width:120px; color: rgb(3, 78, 3); background-color:rgb(132, 255, 132); height: 10px;
 											padding: 10px; display: flex; align-items: center; 
 											justify-content: center; border-radius: 10px;" class="far fa-thumbs-up">
 											<span style="font-size:15px; font-family: Arial, sans-serif;">On auction</span>
@@ -76,6 +76,7 @@
 							<option value="Toyota"> Toyota </option>
 							<option value="Honda"> Honda </option>
 							<option value="Ford"> Ford </option>
+							<option value="Jeep"> Jeep </option>
 						</select><br>
 						<label for="model">Model</label> <br>
 						<input id="model" type="text" name="model"> <br>
