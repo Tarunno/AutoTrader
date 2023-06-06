@@ -26,30 +26,32 @@ class Car(models.Model):
     SELLER_TYPE = [('Dealer', 'Dealer'),
                    ('Customer', 'Customer')]
 
-    make = models.CharField(max_length=100, null=False, blank=False, choices=MAKE)
-    model = models.CharField(max_length=100, null=False, blank=False)
-    seller = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
-    location = models.CharField(max_length=200, null=False, blank=False)
-    vin = models.CharField(max_length=200, null=False, blank=False)
-    mileage = models.CharField(max_length=200, null=False, blank=False)
-    body_style = models.CharField(max_length=100, null=False, blank=False, choices=BODY_STYLE)
-    engine = models.CharField(max_length=100, null=False, blank=False)
-    drivetrain = models.CharField(max_length=100, null=False, blank=False, choices=DRIVETRAIN)
-    transmission = models.CharField(max_length=100, null=False, blank=False, choices=TRANSMISSION)
-    transmission_speed = models.IntegerField(choices=TRANSMISSION_SPEED)
-    exterior_color = models.CharField(max_length=100, null=False, blank=False)
-    interior_color = models.CharField(max_length=100, null=False, blank=False)
-    title_status = models.CharField(max_length=100, null=False, blank=False)
-    seller_type = models.CharField(max_length=100, null=False, blank=False, choices=SELLER_TYPE)
-    highlight = models.TextField(null=False, blank=False)
-    equipment = models.TextField(null=False, blank=False)
-    modification = models.TextField(null=False, blank=False)
-    known_flaw = models.TextField(null=False, blank=False)
-    recent_service_history = models.TextField(null=False, blank=False)
-    ownership_history = models.TextField(null=False, blank=False)
-    seller_note = models.CharField(max_length=300, null=False, blank=False)
+    make = models.CharField(max_length=100, null=True, blank=True, choices=MAKE)
+    model = models.CharField(max_length=100, null=True, blank=True)
+    seller = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    location = models.CharField(max_length=200, null=True, blank=True)
+    vin = models.CharField(max_length=200, null=True, blank=True)
+    mileage = models.CharField(max_length=200, null=True, blank=True)
+    body_style = models.CharField(max_length=100, null=True, blank=True, choices=BODY_STYLE)
+    engine = models.CharField(max_length=100, null=True, blank=True)
+    drivetrain = models.CharField(max_length=100, null=True, blank=True, choices=DRIVETRAIN)
+    transmission = models.CharField(max_length=100, null=True, blank=True, choices=TRANSMISSION)
+    transmission_speed = models.IntegerField(null=True, blank=True, choices=TRANSMISSION_SPEED)
+    exterior_color = models.CharField(max_length=100, null=True, blank=True)
+    interior_color = models.CharField(max_length=100, null=True, blank=True)
+    title_status = models.CharField(max_length=100, null=True, blank=True)
+    seller_type = models.CharField(max_length=100, null=True, blank=True, choices=SELLER_TYPE)
+    highlight = models.TextField(null=True, blank=True)
+    equipment = models.TextField(null=True, blank=True)
+    modification = models.TextField(null=True, blank=True)
+    known_flaw = models.TextField(null=True, blank=True)
+    recent_service_history = models.TextField(null=True, blank=True)
+    ownership_history = models.TextField(null=True, blank=True)
+    seller_note = models.CharField(max_length=300, null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
-    end_at = models.DateTimeField(default=timezone.now, null=False, blank=True)
+    end_at = models.DateTimeField(default=timezone.now, null=True, blank=True)
+    bid = models.IntegerField(default=0, null=True, blank=True)
+    on_auction = models.BooleanField(default=True, null=True, blank=True)
 
     def __str__(self):
         return self.make + ' ' + self.model
@@ -58,7 +60,7 @@ class Car(models.Model):
 class Photo(models.Model):
     TYPE = [('Interior', 'Interior'),
             ('Exterior', 'Exterior')]
-    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='car/', null=False, blank=False)
     type = models.CharField(max_length=100, null=False, blank=False, choices=TYPE)
 
@@ -72,5 +74,3 @@ class Photo(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
 
-    def __str__(self):
-        return self.car.make + ' ' + self.car.make + ' ' + self.car.image

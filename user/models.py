@@ -5,7 +5,13 @@ from PIL import Image
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="customer/default.jpg", upload_to="customer/", null=True, blank=True)
-    
+    phone = models.CharField(max_length=256, null=True, blank=True)
+    location = models.CharField(max_length=256, null=True, blank=True)
+
+    auction_posted = models.IntegerField(default=0)
+    auction_win = models.IntegerField(default=0)
+    auction_loss = models.IntegerField(default=0)
+
     def __str__(self):
          return self.user.username
 

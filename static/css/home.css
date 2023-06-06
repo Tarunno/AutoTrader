@@ -12,11 +12,15 @@
   background-color: #c58aff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .home {
   width: 100%;
   max-width: 1540px;
   margin: auto;
-  padding: 0px 40px;
+  padding: 0 40px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 0.8fr;
   padding-top: 120px;
@@ -54,7 +58,7 @@
   flex-direction: column;
   padding: 10px;
   background-color: white;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   margin-left: -11px;
   border-radius: 10px;
   position: absolute;
@@ -81,9 +85,9 @@
 }
 .home main .filter .sort ul li {
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   padding: 5px;
-  color: #7d7d7d;
+  color: #636363;
   font-weight: 400;
 }
 .home main .filter .sort ul li:hover {
@@ -93,7 +97,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-  padding: 20px 0px;
+  padding: 20px 0;
 }
 .home main .cars .car {
   width: 100%;
@@ -128,7 +132,8 @@
   left: 10px;
   bottom: 10px;
 }
-.home main .cars .car .image .tag p, .home main .cars .car .image .tag i {
+.home main .cars .car .image .tag i,
+.home main .cars .car .image .tag p {
   color: white;
   font-weight: 600;
 }
@@ -136,20 +141,20 @@
   color: #ababab;
 }
 .home main .cars .car .image #tag {
-  background-color: crimson;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .home main .cars .car .image #tag #tag-name {
   color: #ededed;
 }
 .home main .cars .car .info {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   flex-direction: row;
   gap: 15px;
 }
 .home main .cars .car .info .texts {
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 .home main .cars .car .info .texts h4 {
   line-height: calc(15px * 1.618);
@@ -164,10 +169,10 @@
   font-size: 13px;
   line-height: calc(13px * 1.6);
   margin-bottom: 10px;
-  color: #7d7d7d;
+  color: #636363;
 }
 .home main .cars .car .info .buttons {
-  padding: 10px 0px;
+  padding: 10px 0;
   opacity: 0;
 }
 .home main .cars .car .info .buttons i {
@@ -188,7 +193,7 @@
   cursor: pointer;
 }
 .home main .action-results-btn:hover {
-  color: #7d7d7d;
+  color: #636363;
 }
 .home aside {
   margin-left: 40px;
@@ -220,11 +225,11 @@
   cursor: pointer;
 }
 .home aside .youtube-link button:hover {
-  color: #7d7d7d;
+  color: #636363;
 }
 .home aside .new-cars {
-  width: 100%;
   height: fit-content;
+  width: 100%;
   margin-top: 20px;
 }
 .home aside .new-cars .car {
@@ -260,7 +265,8 @@
   left: 10px;
   bottom: 10px;
 }
-.home aside .new-cars .car .image .tag p, .home aside .new-cars .car .image .tag i {
+.home aside .new-cars .car .image .tag i,
+.home aside .new-cars .car .image .tag p {
   color: white;
   font-weight: 600;
 }
@@ -268,20 +274,20 @@
   color: #ababab;
 }
 .home aside .new-cars .car .image #tag {
-  background-color: crimson;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .home aside .new-cars .car .image #tag #tag-name {
   color: #ededed;
 }
 .home aside .new-cars .car .info {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   flex-direction: row;
   gap: 15px;
 }
 .home aside .new-cars .car .info .texts {
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 .home aside .new-cars .car .info .texts h4 {
   line-height: calc(15px * 1.618);
@@ -296,10 +302,10 @@
   font-size: 13px;
   line-height: calc(13px * 1.6);
   margin-bottom: 10px;
-  color: #7d7d7d;
+  color: #636363;
 }
 .home aside .new-cars .car .info .buttons {
-  padding: 10px 0px;
+  padding: 10px 0;
   opacity: 0;
 }
 .home aside .new-cars .car .info .buttons i {
@@ -328,16 +334,16 @@
 .home aside .new-cars .car a .images .extra-images div:nth-child(1) {
   height: 100%;
   width: 100%;
-  border-radius: 0px 5px 0px 0px;
+  border-radius: 0 5px 0 0;
 }
 .home aside .new-cars .car a .images .extra-images div:nth-child(2) {
   height: 100%;
   width: 100%;
-  border-radius: 0px 0px 5px 0px;
+  border-radius: 0 0 5px 0;
 }
 .home aside .new-cars .car a .image {
   height: 160px;
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 5px 0 0 5px;
 }
 .home aside .new-cars .car a .info .texts ul {
   font-size: 10px;
@@ -349,8 +355,7 @@
 /* ------------------ MEDIA QURIES ----------------- */
 @media (min-width: 1560px) {
   .home {
-    padding: 0;
-    padding-top: 120px;
+    padding: 120px 0 0;
   }
   .home aside {
     width: 300px;

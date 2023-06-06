@@ -12,6 +12,10 @@
   background-color: #c58aff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .profile {
   width: 100%;
   max-width: 1540px;
@@ -66,36 +70,51 @@
   background-color: #F3F3F3;
   border-radius: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   grid-gap: 10px;
   padding: 10px;
 }
-.profile main .user .auction-info div {
+.profile main .user .auction-info .info-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+.profile main .user .auction-info .info-cards .auction-posts {
+  background-color: #EDFF81;
+  padding: 20px 20px;
+  width: 100%;
+  border-radius: 10px;
+}
+.profile main .user .auction-info .info-cards .auction-wins {
+  background-color: #9EFFA8;
+  padding: 20px 20px;
+  width: 100%;
+  border-radius: 10px;
+}
+.profile main .user .auction-info .info-cards .auction-loss {
+  background-color: #FFC2B5;
+  padding: 20px 20px;
+  width: 100%;
+  border-radius: 10px;
+}
+.profile main .user .auction-info .recent-threads {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   border-radius: 5px;
   padding: 5px;
 }
-.profile main .user .auction-info div .count {
+.profile main .user .auction-info .recent-threads .count {
   font-size: 55px;
   color: #262626;
 }
-.profile main .user .auction-info div .count-name {
+.profile main .user .auction-info .recent-threads .count-name {
   font-weight: 600;
   color: #262626;
   text-align: center;
-}
-.profile main .user .auction-info .auction-posts {
-  background-color: #EDFF81;
-}
-.profile main .user .auction-info .auction-wins {
-  background-color: #9EFFA8;
-}
-.profile main .user .auction-info .auction-loss {
-  background-color: #FFC2B5;
 }
 .profile main .add-car {
   margin-top: 15px;
@@ -199,6 +218,46 @@
 }
 .profile main .add-car form button:focus {
   outline: none;
+}
+.profile .lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 27px;
+  height: 14px;
+}
+.profile .lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  margin: 0px;
+  margin-left: 4px;
+  border: 2px solid #c58aff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #ebd6ff transparent transparent transparent;
+}
+.profile .lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.profile .lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.profile .lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hide {
+  display: none;
 }
 
 /*# sourceMappingURL=profile.css.map */

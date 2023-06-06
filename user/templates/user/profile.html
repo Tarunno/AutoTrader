@@ -7,32 +7,67 @@
 		<div class="user">
 			<div class="user-info">
 				<div class="image">
-					<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80">
+					<img src="/user/{{customer.image}}/"/>
 				</div>
 				<div class="info">
-					<p class="name"> Alexi Michel Molly </p>
-					<p class="email"> <i class="fas fa-envelope"> </i> aleximichel_molly@fakemail.com </p>
-					<p class="phone"> <i class="fas fa-phone"> </i> 01863987793 </p>
-					<p class="locaion"> <i class="fas fa-map-marker-alt"> </i> Agrabad, Chittagong, Bangladesh </p>
+					<p class="name"> {{user.first_name}} {{user.last_name}} {{user.username}} </p>
+					<p class="email"> <i class="fas fa-envelope"> </i> {{user.email}} </p>
+					<p class="phone"> <i class="fas fa-phone"> </i> {{customer.phone}} </p>
+					<p class="locaion"> <i class="fas fa-map-marker-alt"> </i> {{customer.location}} </p>
 				</div>
 			</div>
 			<div class="auction-info">
-				<div class="auction-posts">
-					<h1 class="count">12</h1>
-					<p class="count-name">Auction Posts</p>
+				<div class="info-cards">
+					<div class="auction-posts">
+						<h1 class="count">{{customer.auction_posted}}</h1>
+						<p class="count-name">Auction Posted</p>
+					</div>
+					<div class="auction-wins">
+						<h1 class="count">{{customer.auction_win}}</h1>
+						<p class="count-name">Auction Won</p>
+					</div>
+					<div class="auction-loss">
+						<h1 class="count">{{customer.auction_loss}}</h1>
+						<p class="count-name">Auction Lost</p>
+					</div>
 				</div>
-				<div class="auction-wins">
-					<h1 class="count">23</h1>
-					<p class="count-name">Auction Wins</p>
-				</div>
-				<div class="auction-loss">
-					<h1 class="count">3</h1>
-					<p class="count-name">Auction Loss</p>
+				<div class="recent-threads">
+					<h4>Recent threads</h4>
+					{% for car in cars %}
+						{% with related_object=car.photo_set.first %}
+						<div style="display: flex; gap: 10px; font-size: 14px; width: 100%; justify-content: space-between; 
+							background-color: #f0e4fd; padding: 10px; border-radius: 10px;">
+							<div style="display: flex; justify-content: space-between; flex-direction: row;">
+								<div class="image" style="margin-right:10px; width:100px; height:60px; border-radius:10px; background: url(../{{related_object.image}}) no-repeat center center/cover">
+								</div>
+								<div style="display: flex; flex-direction: column;">
+									<p><i id="tag-name" class="far fa-clock"></i> {{car.end_at|timeuntil}}</p>
+									<p><span id="tag-name">Bid</span> <span class="bid-log" id="{{car.id}}">${{car.bid}}</span></p>
+									{% if car.on_auction %}
+										<i style="color: rgb(3, 78, 3); background-color:rgb(132, 255, 132); height: 10px;
+											padding: 10px; display: flex; align-items: center; 
+											justify-content: center; border-radius: 10px;" class="far fa-thumbs-up">
+											<span style="font-size:15px; font-family: Arial, sans-serif;">On auction</span>
+										</i>
+									{% endif %}
+									{% if not car.on_auction %}
+										<i style="color: rgb(78, 3, 3); background-color:rgb(255, 132, 132); height: 10px;
+											padding: 10px; display: flex; align-items: center; 
+											justify-content: center; border-radius: 10px;" class="far fa-thumbs-down">
+											<span style="font-size:15px; font-family: Arial, sans-serif;">Auction ended</span>
+										</i>
+									{% endif %}
+								</div>
+							</div>
+							<p>{{car.make}} {{car.model}}</p>
+						</div>
+						{% endwith %}
+					{% endfor %}
 				</div>
 			</div>
 		</div>
-		<div class="add-car">
-			<form method="POST" enctype="multipart/form-data">
+		<div class="add-car" id="sell-car">
+			<form method="POST" enctype="multipart/form-data" class="add-auction-form">
 				<h1>Add auction <span class="error"></span> </h1>
 				<div class="inner-container">
 					<div class="left">
@@ -119,7 +154,12 @@
 					<input type="file" id="interior-images" name="interior_images" multiple>
 				</div>
 				{% csrf_token %}
-				<button type="submit"> Add </button>
+				<button type="submit"> 
+					<span class="button-text">Add</span>  
+					<div class="loading hide">
+						<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+					</div>
+				</button>
 			</form>
 		</div>
 	</main>

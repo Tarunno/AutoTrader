@@ -1,4 +1,5 @@
 {% extends 'app/base.html' %}
+{% load custom_tags %}
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/car.css' %}">
@@ -9,12 +10,12 @@
 <div class="car">
 	<main>
 		<div class="heading">
-			<h2>BMX M3 Coupe
+			<h2>{{car.make}} {{car.model}}
 				<div class="buttons">
 					<i class="far fa-star"></i>
 				</div>
 			</h2>
-			<p>6-Speed Manual, Florida-Owned, Highly Equipped</p>
+			<p>{{car.engine}}, {{car.transmission_speed}}-speed {{car.transmission}}, Run {{car.mileage}}</p>
 			<div class="share">
 				<i class="fas fa-share-alt"><span>Share</span></i>
 			</div>
@@ -24,21 +25,15 @@
 				<h3>Exterior images</h3>
 				<div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="https://www.cnet.com/a/img/-184Ixw7d29e-cxgFxFvidfWpq0=/1200x630/2008/02/24/cba933e8-f8fc-11e2-8c7c-d4ae52e62bcc/bmw-M3coupe-11.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://www.carpixel.net/w/ee2b7e2c9bea06938965986fa37eeb8d/bmw-m3-coupe-car-wallpaper-82295.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://pictures.topspeed.com/IMG/crop/201205/bmw-335i-coupe-bt92--2_800x0w.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://bringatrailer.com/wp-content/uploads/2017/12/DSC_6130-e1513715898134.jpg?fit=940%2C652" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://mrsportscars.com/wp-content/uploads/2019/08/BMW-M3-E46-SMG-Coupe-Manual-CSL-Alpine-White-UK-Specialist-Carbon-For-Sale-48-940x600.jpg" />
-						</div>
+						{% with related_object=car.photo_set.all %}
+							{% for image in related_object %}
+								{% if image.type == 'Exterior' %}
+									<div class="swiper-slide">
+										<img src="/{{image.image}}" />
+									</div>
+								{% endif %}
+							{% endfor %}
+						{% endwith %}
 					</div>
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
@@ -46,21 +41,15 @@
 
 				<div thumbsSlider="" class="swiper mySwiper">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="https://www.cnet.com/a/img/-184Ixw7d29e-cxgFxFvidfWpq0=/1200x630/2008/02/24/cba933e8-f8fc-11e2-8c7c-d4ae52e62bcc/bmw-M3coupe-11.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://www.carpixel.net/w/ee2b7e2c9bea06938965986fa37eeb8d/bmw-m3-coupe-car-wallpaper-82295.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://pictures.topspeed.com/IMG/crop/201205/bmw-335i-coupe-bt92--2_800x0w.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://bringatrailer.com/wp-content/uploads/2017/12/DSC_6130-e1513715898134.jpg?fit=940%2C652" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://mrsportscars.com/wp-content/uploads/2019/08/BMW-M3-E46-SMG-Coupe-Manual-CSL-Alpine-White-UK-Specialist-Carbon-For-Sale-48-940x600.jpg" />
-						</div>
+						{% with related_object=car.photo_set.all %}
+							{% for image in related_object %}
+								{% if image.type == 'Exterior' %}
+									<div class="swiper-slide">
+										<img src="/{{image.image}}" />
+									</div>
+								{% endif %}
+							{% endfor %}
+						{% endwith %}
 					</div>
 				</div>
 			</div>
@@ -68,21 +57,15 @@
 				<h3>Interior images</h3>
 				<div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper4">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="https://cdn.carbuzz.com/gallery-images/2008-bmw-m3-coupe-dashboard-carbuzz-453871.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://cdn.carbuzz.com/gallery-images/2008-bmw-m3-coupe-central-console-carbuzz-453872.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://i.pinimg.com/originals/3c/5d/fb/3c5dfb55e105d1177d920706c9bf121b.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://www.enginefinder.co.za/wp-content/uploads/2018/02/bmw-e36-m3-3.2-engine-for-sale.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://i.pinimg.com/originals/d0/d6/3a/d0d63ab727680bd2df4df9fb3ffaadd7.jpg" />
-						</div>
+						{% with related_object=car.photo_set.all %}
+							{% for image in related_object %}
+								{% if image.type == 'Interior' %}
+									<div class="swiper-slide">
+										<img src="/{{image.image}}" />
+									</div>
+								{% endif %}
+							{% endfor %}
+						{% endwith %}
 					</div>
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
@@ -90,21 +73,15 @@
 
 				<div thumbsSlider="" class="swiper mySwiper3">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="https://cdn.carbuzz.com/gallery-images/2008-bmw-m3-coupe-dashboard-carbuzz-453871.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://cdn.carbuzz.com/gallery-images/2008-bmw-m3-coupe-central-console-carbuzz-453872.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://i.pinimg.com/originals/3c/5d/fb/3c5dfb55e105d1177d920706c9bf121b.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://www.enginefinder.co.za/wp-content/uploads/2018/02/bmw-e36-m3-3.2-engine-for-sale.jpg" />
-						</div>
-						<div class="swiper-slide">
-							<img src="https://i.pinimg.com/originals/d0/d6/3a/d0d63ab727680bd2df4df9fb3ffaadd7.jpg" />
-						</div>
+						{% with related_object=car.photo_set.all %}
+							{% for image in related_object %}
+								{% if image.type == 'Interior' %}
+									<div class="swiper-slide">
+										<img src="/{{image.image}}" />
+									</div>
+								{% endif %}
+							{% endfor %}
+						{% endwith %}
 					</div>
 				</div>
 			</div>
@@ -113,55 +90,77 @@
 			<div class="bid-info">
 				<div class="bid-info-bar">
 					<div class="info">
-						<p><i class="far fa-clock"></i><span>Time Left</span> 12:32:02</p>
-						<p><span>High Bid</span> $15,500</p>
+						<p><i class="far fa-clock"></i><span>Time left</span> {{car.end_at|timeuntil}}</p>
+						<p><span>High Bid</span> <span style="color:#fff" class="bid-log" id="{{car.id}}">${{car.bid}}</span></p>
 						<p><span>Bids</span> 13</p>
 						<p><span>Questions</span> 11</p>
 					</div>
-					<a href="{% url 'place-bid' 10 %}"><button class="place-bid-btn"> Place Bid </button></a>
+					<a href="{% url 'place-bid' car.id %}"><button class="place-bid-btn"> Place Bid </button></a>
 				</div>
+				<script>
+					let group_name = 'biders'
+					
+					let ws = new WebSocket('ws://' + window.location.host + '/ws/ac/' + group_name + '/')
+			
+					ws.onopen = function() {
+						console.log('WebScoket Connection open...')
+					}
+					ws.onmessage = function(event) {
+						console.log('Message Received from Server', event)
+						const data = JSON.parse(event.data)
+						let bids = document.querySelectorAll('.bid-log')
+						bids.forEach((bid) => {
+							if(bid.id == data['msg']['bid_id']){
+								bid.innerText = '$' + data['msg']['bid_value']
+							}
+						})
+					}
+					ws.onclose = function(event) {
+						console.log('WS Connection closed...', event)
+					}
+				</script>
 				<table>
 					<tr>
 						<th>Make</th>
-						<td>BMW ltd.</td>
+						<td>{{car.make}}</td>
 						<th>Engine</th>
-						<td>5.7L V8</td>
+						<td>{{car.engine}}</td>
 					</tr>
 					<tr>
 						<th>Model</th>
-						<td>M3 sports</td>
+						<td>{{car.model}}</td>
 						<th>Drivetrain</th>
-						<td>Rear-wheel drive</td>
+						<td>{{car.drivetrain}}</td>
 					</tr>
 					<tr>
 						<th>Seller</th>
-						<td>Mahadi Hasan</td>
+						<td>{{car.seller.username}}</td>
 						<th>Transmission</th>
-						<td>Automatic (3-Speed)</td>
+						<td>{{car.transmission}} ({{car.transmission_speed}})</td>
 					</tr>
 					<tr>
 						<th>Location</th>
-						<td>Jacksonville, FL 32207</td>
+						<td>{{car.location}}</td>
 						<th>Exterior Color</th>
-						<td>Charcoal Metallic</td>
+						<td>{{car.exterior_color}}</td>
 					</tr>
 					<tr>
 						<th>VIN</th>
-						<td>1G1AP87L5BL151795</td>
+						<td>{{car.vin}}</td>
 						<th>Interior Color</th>
-						<td>Dark Gray</td>
+						<td>{{car.interior_color}}</td>
 					</tr>
 					<tr>
 						<th>Mileage</th>
-						<td>75,124 Miles Shown – TMU</td>
+						<td>{{car.mileage}}km Shown – TMU</td>
 						<th>Title Status</th>
-						<td>Not Actual Mileage (IA)</td>
+						<td>{{car.title_status}}</td>
 					</tr>
 					<tr>
 						<th>Body Style</th>
-						<td>Coupe</td>
+						<td>{{car.body_style}}</td>
 						<th>Seller Type</th>
-						<td>Dealer</td>
+						<td>{{car.seller_type}}</td>
 					</tr>
 				</table>
 				<div class="seller-saying">
@@ -169,57 +168,51 @@
 						<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80">
 					</div>
 					<div class="saying">
-						<h2>Taronno's Saying</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-							laborum.</p>
+						<h2>{{car.seller.username}}'s Saying</h2>
+						<p>{{car.seller_note}}</p>
 					</div>
 				</div>
 				<div class="descriptions">
 					<div id="div" class="high-lights">
 						<h2>Highlights</h2>
 						<ul>
-							<li>This Miata is equipped with the desirable 5-speed manual transmission</li>
-							<li>The attached Carfax history report shows no accidents or mileage discrepancies in this Miata’s past. It also shows that it was registered in Florida from new up until March 2021.</li>
-							<li>Factory equipment includes the C Package (limited-slip differential, tan leather upholstery, tan soft top, leather steering wheel, cruise control, power windows and door mirrors), headrest speakers, and more as listed
-								below. Exterior pinstriping is the sole modification reported by the seller.</li>
-							<li>Introduced in 1989, the first-generation NA Mazda MX-5 Miata is beloved for being a fun, accessible, lightweight roadster that is an absolute joy to drive at any speed. Its excellent build quality and abundant
-								aftermarket support have given the NA Miata a cult-like following.</li>
-							<li>Power comes from a 1.8-liter inline-four, rated at 128 horsepower and 110 lb-ft of torque. Output is sent to the rear wheels via a 5-speed manual transmission.</li>
+							{% for line in car.highlight|split %}
+								<li>{{line}}</li>
+							{% endfor %}
 						</ul>
 					</div>
 					<div id="div" class="equipments">
 						<h2>Equipments</h2>
 						<ul>
-							<li>C Package (limited-slip differential, tan leather upholstery, tan soft top, leather steering wheel, power windows and door mirrors, cruise control)</li>
-							<li>14-inch wheels</li>
-							<li>Chrome roll bar</li>
-							<li>Dual airbags</li>
-							<li>Air conditioning</li>
-							<li>Headrest speakers</li>
+							{% for line in car.equipment|split %}
+								<li>{{line}}</li>
+							{% endfor %}
 						</ul>
 					</div>
 					<div id="div" class="modifications">
 						<h2>Modifications</h2>
 						<ul>
-							<li>Exterior pinstriping</li>
+							{% for line in car.modification|split %}
+								<li>{{line}}</li>
+							{% endfor %}
 						</ul>
 					</div>
 					<div id="div" class="known-flaws">
 						<h2>Known Flaws</h2>
 						<ul>
-							<li>Some paint chips on the hood</li>
-							<li>Dings and scratches on various body panels (pictured in the gallery)</li>
-							<li>Clearcoat fade on the driver’s door and on the trunk</li>
-							<li>Wear on the steering wheel rim, handbrake lever, and head unit</li>
-							<li>Some corrosion on the chrome roll bar</li>
+							{% for line in car.known_flaw|split %}
+								<li>{{line}}</li>
+							{% endfor %}
 						</ul>
 					</div>
 					<div id="div" class="recent-service-history">
 						<h2>Recent Service History</h2>
 						<ul>
-							<li>The seller states that recent work included an engine oil and filter change, as well as a new plastic window for the top, though no documentation is available. Additional service history is detailed in the attached
-								Carfax report.</li>
+							<ul>
+								{% for line in car.recent_service_history|split %}
+									<li>{{line}}</li>
+								{% endfor %}
+							</ul>
 						</ul>
 					</div>
 					<div class="question-answers">
@@ -229,7 +222,7 @@
 						        <div class="swiper-slide">
 									<div class="user">
 										<img src="https://img.freepik.com/free-photo/gorgeous-white-girl-with-long-wavy-hair-chilling-autumn-day-outdoor-portrait-interested-ginger-female-model-with-cup-coffee_197531-11735.jpg?w=2000">
-										<h5>Tasnim Srity</h5>
+										<h5>Alexi Michel</h5>
 									</div>
 									<div class="question">
 										<h3><span>Q: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h3>
@@ -252,7 +245,7 @@
 						        <div class="swiper-slide">
 									<div class="user">
 										<img src="https://img.freepik.com/free-photo/gorgeous-white-girl-with-long-wavy-hair-chilling-autumn-day-outdoor-portrait-interested-ginger-female-model-with-cup-coffee_197531-11735.jpg?w=2000">
-										<h5>Tasnim Begum Srity</h5>
+										<h5>Alexi Michel</h5>
 									</div>
 									<div class="question">
 										<h3><span>Q: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h3>
@@ -275,7 +268,7 @@
 						        <div class="swiper-slide">
 									<div class="user">
 										<img src="https://img.freepik.com/free-photo/gorgeous-white-girl-with-long-wavy-hair-chilling-autumn-day-outdoor-portrait-interested-ginger-female-model-with-cup-coffee_197531-11735.jpg?w=2000">
-										<h5>Tasnim Srity</h5>
+										<h5>Alexi Michel</h5>
 									</div>
 									<div class="question">
 										<h3><span>Q: </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h3>

@@ -2,8 +2,11 @@ from django.urls import path
 from django.contrib.auth.models import User
 from . import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', views.home, name='home'),
-    path('car/', views.car, name='car'),
+    path('car/<int:id>/', views.car, name='car'),
     path('place-bid/<int:car_id>/', views.place_bid, name='place-bid'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

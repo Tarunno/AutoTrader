@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,12 @@ INSTALLED_APPS = [
     'app.apps.AppConfig',
     'django_cleanup.apps.CleanupConfig',
 ]
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 
 MIDDLEWARE = [
@@ -72,7 +79,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'AutoTrader.wsgi.application'
+#WSGI_APPLICATION = 'AutoTrader.wsgi.application'
+ASGI_APPLICATION = 'AutoTrader.asgi.application'
 
 
 # Database

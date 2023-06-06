@@ -45,7 +45,7 @@
 			}
 
 			#tag {
-				background-color: crimson;
+				background-color: rgba(0, 0, 0, 0.5);
 
 				#tag-name {
 					color: #ededed;
@@ -54,8 +54,7 @@
 		}
 
 		.info {
-			@include flex(center, flex-start);
-
+			@include flex(space-between, flex-start);
 			.texts {
 				padding: 10px 0;
 
@@ -81,11 +80,9 @@
 			.buttons {
 				padding: 10px 0;
 				opacity: 0;
-
 				i {
 					font-size: 20px;
 					padding: 3px;
-
 					&:hover {
 						border-bottom: 3px solid $brand-color;
 					}

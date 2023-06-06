@@ -12,6 +12,10 @@
   background-color: #c58aff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .bid {
   width: 100%;
   max-width: 1540px;
@@ -108,6 +112,9 @@
   width: 100%;
 }
 .bid main .bid-info .place-bid-btn {
+  background-color: #c58aff;
+}
+.bid main .bid-info .selected {
   background-color: #c58aff;
 }
 

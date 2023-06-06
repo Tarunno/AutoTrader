@@ -3,7 +3,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 <div class="home">
-	<main>
+	<main id="auctions">
 		<h2>Auctions</h2>
 		<div class="filter">
 			<div class="filter-section">
@@ -46,154 +46,59 @@
 				</ul>
 			</div>
 		</div>
+
+	
 		<div class="cars">
-			<div class="car">
-				<a href="">
-					<div class="image" style="background: url('https://images.pexels.com/photos/248687/pexels-photo-248687.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') no-repeat center center/cover">
-						<div class="tag" id="tag">
-							<p><i id="tag-name" class="far fa-clock"></i> 01:32:02</p>
-							<p><span id="tag-name">Bid</span> $140,500</p>
+			{% for car in cars %}
+				{% if car.on_auction %}
+				{% with related_object=car.photo_set.first %}
+				<div class="car">
+					<a href="{% url 'car' car.id %}">
+						<div class="image" style="background: url(../{{related_object.image}}) no-repeat center center/cover">
+							<div class="tag" id="tag">
+								<p><i id="tag-name" class="far fa-clock"></i> {{car.end_at|timeuntil}}</p>
+								<p><span id="tag-name">Bid</span> <span class="bid-log" id="{{car.id}}">${{car.bid}}</span></p>
+							</div>
 						</div>
-					</div>
-					<div class="info">
-						<div class="texts">
-							<h4>1998 Cevy Impala GM2000 Classic Custom</h4>
-							<p class="description">1 Owner, ~26,200 Miles, 6-Speed Manual, V8 Power, 2SS Package</p>
-							<p class="location">Wakefield, MA 01880</p>
+						<div class="info">
+							<div class="texts">
+								<h4>{{car.make}} {{car.model}}</h4>
+								<p class="description">{{car.engine}}, {{car.transmission_speed}}-speed {{car.transmission}}, Run {{car.mileage}}km</p>
+								<p class="location">{{car.location}}</p>
+							</div>
+							<div class="buttons">
+								<i class="far fa-star"></i>
+							</div>
 						</div>
-						<div class="buttons">
-							<i class="far fa-star"></i>
-						</div>
-					</div>
-				</a>
+					</a>
+				</div>
+				{% endwith %}
+				{% endif %}
+			{% endfor %}
 			</div>
-
-			<!-- DUMMY DATA START | CARS-->
-
-			<div class="car">
-				<a href="">
-					<div class="image" style="background: url('https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') no-repeat center center/cover">
-						<div class="tag">
-							<p><i id="tag-name" class="far fa-clock"></i> 08:32:02</p>
-							<p><span id="tag-name">Bid</span> $90,500</p>
-						</div>
-					</div>
-					<div class="info">
-						<div class="texts">
-							<h4>2019 White Land Rover Range Rover</h4>
-							<p class="description">$6,000+ Service in June 2021, California-Kept, $32,150 in Options</p>
-							<p class="location">Wakefield, MA 01880</p>
-						</div>
-						<div class="buttons">
-							<i class="far fa-star"></i>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="car">
-				<a href="">
-					<div class="image" style="background: url('https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') no-repeat center center/cover">
-						<div class="tag">
-							<p><i id="tag-name" class="far fa-clock"></i> 12:32:02</p>
-							<p><span id="tag-name">Bid</span> $15,500</p>
-						</div>
-					</div>
-					<div class="info">
-						<div class="texts">
-							<h4>2009 Blue BMW M3 Sedan</h4>
-							<p class="description">1 Owner, ~26,200 Miles, 6-Speed Manual, V8 Power, 2SS Package</p>
-							<p class="location">Wakefield, MA 01880</p>
-						</div>
-						<div class="buttons">
-							<i class="far fa-star"></i>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="car">
-				<a href="">
-					<div class="image" style="background: url('https://images.pexels.com/photos/241316/pexels-photo-241316.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') no-repeat center center/cover">
-						<div class="tag">
-							<p><i id="tag-name" class="far fa-clock"></i> 1 Day </p>
-							<p><span id="tag-name">Bid</span> $58,500</p>
-						</div>
-					</div>
-					<div class="info">
-						<div class="texts">
-							<h4>2015 Silver Mercedes Benz AMG-GT Coupe</h4>
-							<p class="description">1 Owner, ~26,200 Miles, 6-Speed Manual, V8 Power, 2SS Package</p>
-							<p class="location">Wakefield, MA 01880</p>
-						</div>
-						<div class="buttons">
-							<i class="far fa-star"></i>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="car">
-				<a href="">
-					<div class="image" style="background: url('https://images.pexels.com/photos/446389/pexels-photo-446389.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') no-repeat center center/cover">
-						<div class="tag">
-							<p><i id="tag-name" class="far fa-clock"></i> 2 Day</p>
-							<p><span id="tag-name">Bid</span> $46,500</p>
-						</div>
-					</div>
-					<div class="info">
-						<div class="texts">
-							<h4>2009 Golder Mercedes Benz AMG-GT Sedan</h4>
-							<p class="description">1 Owner, ~26,200 Miles, 6-Speed Manual, V8 Power, 2SS Package</p>
-							<p class="location">Wakefield, MA 01880</p>
-						</div>
-						<div class="buttons">
-							<i class="far fa-star"></i>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="car">
-				<a href="">
-					<div class="image" style="background: url('https://images.pexels.com/photos/164654/pexels-photo-164654.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') no-repeat center center/cover">
-						<div class="tag">
-							<p><i id="tag-name" class="far fa-clock"></i> 7 Day</p>
-							<p><span id="tag-name">Bid</span> $146,500</p>
-						</div>
-					</div>
-					<div class="info">
-						<div class="texts">
-							<h4>2020 Orange Mercedes Benz G63</h4>
-							<p class="description">1 Owner, ~26,200 Miles, 6-Speed Manual, V8 Power, 2SS Package</p>
-							<p class="location">Wakefield, MA 01880</p>
-						</div>
-						<div class="buttons">
-							<i class="far fa-star"></i>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="car">
-				<a href="">
-					<div class="image" style="background: url('https://images.pexels.com/photos/244206/pexels-photo-244206.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') no-repeat center center/cover">
-						<div class="tag">
-							<p><i id="tag-name" class="far fa-clock"></i> 7 Day</p>
-							<p><span id="tag-name">Bid</span> $146,500</p>
-						</div>
-					</div>
-					<div class="info">
-						<div class="texts">
-							<h4>2020 Blue Audi A6 Sedan</h4>
-							<p class="description">1 Owner, ~26,200 Miles, 6-Speed Manual, V8 Power, 2SS Package</p>
-							<p class="location">Wakefield, MA 01880</p>
-						</div>
-						<div class="buttons">
-							<i class="far fa-star"></i>
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<!-- DUMMY DATA END | CARS -->
-
-		</div>
+			{{car.end_at|json_script:"end_time"}}
+			<script>
+				let group_name = 'biders'
+				
+				let ws = new WebSocket('ws://' + window.location.host + '/ws/ac/' + group_name + '/')
+		
+				ws.onopen = function() {
+					console.log('WebScoket Connection open...')
+				}
+				ws.onmessage = function(event) {
+					console.log('Message Received from Server', event)
+					const data = JSON.parse(event.data)
+					let bids = document.querySelectorAll('.bid-log')
+					bids.forEach((bid) => {
+						if(bid.id == data['msg']['bid_id']){
+							bid.innerText = '$' + data['msg']['bid_value']
+						}
+					})
+				}
+				ws.onclose = function(event) {
+					console.log('WS Connection closed...', event)
+				}
+			</script>
 		<button class="action-results-btn" type="button" name="button"> View Action Results </button>
 	</main>
 	<aside>

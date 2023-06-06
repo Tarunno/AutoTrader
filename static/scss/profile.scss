@@ -50,14 +50,38 @@
 				background-color: $box-bg;
 				border-radius: 10px;
 				display: flex;
-				flex-direction: row;
+				flex-direction: column;
 				grid-gap: 10px;
 				padding: 10px;
-				div{
+				.info-cards{
+					display: flex;
+					flex-direction: row;
+					gap: 10px;
+					width: 100%;
+					.auction-posts{
+						background-color: #EDFF81;
+						padding: 20px 20px;
+						width: 100%;
+						border-radius: 10px;
+					}
+					.auction-wins{
+						background-color: #9EFFA8;
+						padding: 20px 20px;
+						width: 100%;
+						border-radius: 10px;
+					}
+					.auction-loss{
+						background-color: #FFC2B5;
+						padding: 20px 20px;
+						width: 100%;
+						border-radius: 10px;
+					}
+				}
+				.recent-threads{
 					width: 100%;
 					display: flex;
-					justify-content: center;
-					align-items: center;
+					justify-content: flex-start;
+					align-items: flex-start;
 					flex-direction: column;
 					border-radius: 5px;
 					padding: 5px;
@@ -70,15 +94,6 @@
 						color: $font-color-primary;
 						text-align: center;
 					}
-				}
-				.auction-posts{
-					background-color: #EDFF81;
-				}
-				.auction-wins{
-					background-color: #9EFFA8;
-				}
-				.auction-loss{
-					background-color: #FFC2B5;
 				}
 			}
 		}
@@ -182,4 +197,44 @@
 			}
 		}
 	}
+	.lds-ring {
+		display: inline-block;
+		position: relative;
+		width: 27px;
+		height: 14px;
+	}
+	.lds-ring div {
+		box-sizing: border-box;
+		display: block;
+		position: absolute;
+		width: 18px;
+		height: 18px;
+		margin: 0px;
+		margin-left: 4px;
+		border: 2px solid $brand-color;
+		border-radius: 50%;
+		animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+		border-color: $brand-color-secondary transparent transparent transparent;
+	}
+	.lds-ring div:nth-child(1) {
+		animation-delay: -0.45s;
+	}
+	.lds-ring div:nth-child(2) {
+		animation-delay: -0.3s;
+	}
+	.lds-ring div:nth-child(3) {
+		animation-delay: -0.15s;
+	}
+	@keyframes lds-ring {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+	
+}
+.hide{
+	display: none;
 }

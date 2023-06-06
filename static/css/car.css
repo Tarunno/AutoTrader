@@ -12,6 +12,10 @@
   background-color: #c58aff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .car {
   width: 100%;
   max-width: 1540px;

@@ -53,18 +53,38 @@ function handleTextArea(Input, Label){
 // Adding Car | form submit
 form.addEventListener('submit', addCarSubmit)
 
-function addCarSubmit(e){
+async function addCarSubmit(e){
 	e.preventDefault()
 	let formData = new FormData(form)
 	console.log(Array.from(formData))
 
+	let loader = document.querySelector('.loading')
+	let btn_text = document.querySelector('.button-text')
+
+	loader.classList.remove('hide')
+	btn_text.classList.add('hide')
+	
 	let url = '/user/add-car/'
-	fetch(url, {
-		method: "POST",
-		body: formData
-	})
-	.then((res) => res.json())
-	.then((data) => {
-		console.log(data)
-	})
+	try{
+		await fetch(url, {
+			method: "POST",
+			body: formData
+		})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data)
+			loader.classList.add('hide')
+			btn_text.classList.remove('hide')
+		})
+		.then(err => {
+			console.log(err)
+			loader.classList.add('hide')
+			btn_text.classList.remove('hide')
+		})
+	}
+	catch(err){
+		console.log(err)
+		loader.classList.add('hide')
+		btn_text.classList.remove('hide')
+	}
 }

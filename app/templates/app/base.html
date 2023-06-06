@@ -13,11 +13,9 @@
 
 <body>
 	<header>
-		<a href="{% url 'home' %}">
-			<div class="logo">
+		<div class="logo">
 				<h1>Auto<span>Trader</span></h1>
-			</div>
-		</a>
+		</div>
 		<nav>
 			<ul>
 				<div class="mob-content">
@@ -29,8 +27,8 @@
 					</div>
 				</div>
 				<div class="mob-overlay">
-					<li><a href="">Auctions</a></li>
-					<li><a class="emphasize" href="">Sell a Car</a></li>
+					<li><a href="{% url 'home' %}">Auctions</a></li>
+					<li><a class="emphasize" href="{% url 'profile' user.id %}#sell-car">Sell a Car</a></li>
 					<li><a href="">About</a></li>
 				</div>
 			</ul>
@@ -53,7 +51,7 @@
 	<footer>
 		<a href="{% url 'home' %}">
 			<div class="logo">
-				<h1>Cars<span>&</span>Bids</h1>
+				<h1>Auto<span>Trader</span></h1>
 				<p>Auction your modern enthusiast car
 					anything cool and exciting from the 1980s to the 2020s.</p>
 			</div>
@@ -85,7 +83,7 @@
 			<i class="fab fa-youtube"></i>
 			<i class="fab fa-facebook"></i>
 			<i class="fab fa-twitter"></i>
-			<p>© Copyright 2021 Cars and Bids LLC</p>
+			<p>© Copyright 2021 AutoTrader</p>
 			<p>Terms of Use Privacy Policy</p>
 		</div>
 	</footer>

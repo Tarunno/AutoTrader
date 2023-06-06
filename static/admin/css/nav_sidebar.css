@@ -40,7 +40,6 @@
     margin-left: -340px;
     background-color: #ffffff;
     overflow: auto;
-	transition: .5s;
 }
 
 [dir="rtl"] #nav-sidebar {

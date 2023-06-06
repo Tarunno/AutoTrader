@@ -391,6 +391,7 @@ input[type=number], input[type=tel], textarea, select, .vTextField {
     padding: 7px;
     margin-top: 0;
 	background-color: #f4f4f4;
+    color: #111!important;
 }
 
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
@@ -420,7 +421,7 @@ select[multiple] {
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
     background: white;
-	box-shadow: 2px 2px 5px lightgray;
+	box-shadow: 2px 2px 5px rgb(131, 131, 131);
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -870,6 +871,9 @@ table#change-history tbody th {
 
 #user-tools {
     float: right;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     padding: 0;
     margin: 0 0 0 20px;
     font-weight: 300;
@@ -878,6 +882,25 @@ table#change-history tbody th {
     text-transform: uppercase;
     text-align: right;
 	color: black;
+}
+
+#user-tools button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: #9735fa;
+    color: #fff;
+}
+
+#user-tools .theme-toggle{
+    border: 1px solid #cf9fff;
+    border-radius: 20px;
+    padding: 5px 5px;
+    background-color: #fff;
+}
+
+#user-tools .theme-toggle use{
+    color: #ffffff;
 }
 
 #user-tools a {
@@ -979,4 +1002,58 @@ table#change-history tbody th {
 
 .popup #header {
     padding: 10px 20px;
+}
+#changelist-filter{
+    background: #fff!important;
+}
+a{
+    color: #9735fa!important;
+}
+.actions, .paginator{
+    background: #b486e2!important;
+    border-radius: 10px;
+    color: #111!important;
+    border: none!important;
+}
+
+.skip-to-content-link{
+    padding: 40px;
+}
+
+#toolbar{
+    background-color: #e6cdff!important;
+    border: none;
+    border-radius: 10px;
+}
+#toolbar div{
+    display: flex;
+    gap: 10px;
+}
+#searchbar{
+    color: #111!important;
+    width: calc(100% - 40px);
+}
+label{
+    color: #111!important;
+}
+.historylink{
+    background-color: #9735fa!important;
+    color: #fff!important;
+}
+.file-upload{
+    color: #9735fa!important;
+}
+.submit-row{
+    background-color: #b486e2!important;
+    border-radius: 10px!important;
+}
+.deletelink{
+    background-color: #f01e1e!important;
+    color: #fff!important;
+}
+html{
+    overflow: hidden!important;
+}
+.datetime{
+    color: #9735fa!important;
 }

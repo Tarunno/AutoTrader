@@ -12,4 +12,8 @@
   background-color: #c58aff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /*# sourceMappingURL=_init.css.map */

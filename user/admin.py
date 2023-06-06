@@ -5,4 +5,4 @@ admin.site.site_header = 'Cars & Bids | admin'
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ['user', 'image']
+    list_display = ['user', 'image', 'location']
