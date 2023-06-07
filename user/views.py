@@ -1,12 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt,csrf_protect
 from django.contrib.auth.models import User
 from .forms import *
 from app.models import *
 from .models import *
-import json
+
 
 def signup(request):
     form = UserSignup(request.POST or None)
@@ -39,7 +38,7 @@ def signin(request):
     return render(request, 'user/signin.html', context)
 
 @login_required
-def profile(request, userID):
+def profile(request, userID=-1):
     user = User.objects.get(id=userID)
     cars = Car.objects.filter(seller=request.user).order_by('-end_at')[0:2]
     customer = user.customer

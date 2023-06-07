@@ -28,7 +28,11 @@
 				</div>
 				<div class="mob-overlay">
 					<li><a href="{% url 'home' %}">Auctions</a></li>
-					<li><a class="emphasize" href="{% url 'profile' user.id %}#sell-car">Sell a Car</a></li>
+					{% if user.is_authenticated %}
+						<li><a class="emphasize" href="{% url 'profile' user.id %}#sell-car">Sell a Car</a></li>
+					{% else %} 
+						<li><a class="emphasize" href="{% url 'signup' %}">Sell a Car</a></li>
+					{% endif %}
 					<li><a href="">About</a></li>
 				</div>
 			</ul>
@@ -40,7 +44,10 @@
 			</form>
 		</div>
 		{% if user.is_authenticated %}
-			<a class="signup-btn" href="{% url 'profile' user.id %}">Profile</a>
+			<div style="display: flex; gap: 0px; align-items: center;">
+				<a class="signup-btn" href="{% url 'profile' user.id %}">Profile</a>
+				<a class="signup-btn" style="padding: 13px 13px; border: 2px solid #c58aff; background-color: #fff;" href="{% url 'logout' %}">Logout</a>
+			</div>
 		{% else %}
 			<a class="signup-btn" style="white-space: nowrap;" href="{% url 'signup' %}">Sign up</a>
 		{% endif %}

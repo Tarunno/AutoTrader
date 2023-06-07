@@ -1,16 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import JsonResponse
 from .models import *
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
     current_datetime = timezone.localtime(timezone.now())
     cars = Car.objects.filter(end_at__gte=current_datetime).order_by('end_at')
     removed_car = Car.objects.filter(end_at__lt=current_datetime)
-    for car in removed_car:
-        car.on_auction = False
-        car.save()
+    for i in removed_car:
+        i.on_auction = False
+        i.save()
     images = []
     for car in cars:
         image = Photo.objects.filter(car=car).first()
@@ -34,6 +35,8 @@ def car(request, id):
     }
     return render(request, 'app/car.html', context)
 
+
+@login_required
 def place_bid(request, car_id):
     car = Car.objects.get(id=car_id)
     current_datetime = timezone.localtime(timezone.now())
@@ -42,9 +45,9 @@ def place_bid(request, car_id):
     context = {
         'car': car
     }
-    for car in removed_car:
-        car.on_auction = False
-        car.save()
+    for i in removed_car:
+        i.on_auction = False
+        i.save()
     if request.method == "POST":
         if car.on_auction:
             bid_value = request.POST.get('bid_value')
@@ -55,6 +58,7 @@ def place_bid(request, car_id):
             return JsonResponse({'error': 'No longer on auction!'}, safe=False)
     return render(request, 'app/bid.html', context)
 
+@login_required
 def remove_bid(request, car_id):
     car = Car.objects.get(id=car_id)
     car.on_auction = False 
