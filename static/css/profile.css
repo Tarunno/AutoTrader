@@ -34,14 +34,14 @@ html {
   gap: 15px;
 }
 .profile main .user .user-info {
-  width: 60%;
-  display: flex;
+  padding: 10px;
+  width: 40%;
   border-radius: 10px;
   background-color: #F3F3F3;
 }
 .profile main .user .user-info .image {
-  width: 30%;
-  padding: 10px;
+  width: 200px;
+  height: 200px;
 }
 .profile main .user .user-info .image img {
   width: 100%;
@@ -51,6 +51,9 @@ html {
 }
 .profile main .user .user-info .info {
   padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 .profile main .user .user-info .info p {
   margin-bottom: 10px;
@@ -66,7 +69,7 @@ html {
   color: #636363;
 }
 .profile main .user .auction-info {
-  width: 40%;
+  width: 60%;
   background-color: #F3F3F3;
   border-radius: 10px;
   display: flex;
@@ -99,13 +102,18 @@ html {
   border-radius: 10px;
 }
 .profile main .user .auction-info .recent-threads {
+  padding: 0px 5px;
+}
+.profile main .user .auction-info .recent-threads .recent-threads-list {
   width: 100%;
+  height: 360px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  border-radius: 5px;
-  padding: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 5px;
 }
 .profile main .user .auction-info .recent-threads .count {
   font-size: 55px;
@@ -131,16 +139,16 @@ html {
 .profile main .add-car a:hover {
   background-color: #c58aff;
 }
-.profile main .add-car form {
+.profile form {
   padding: 40px;
   background-color: #f4f4f4;
   border-radius: 10px;
   width: 100%;
 }
-.profile main .add-car form #end-at {
+.profile form #end-at {
   padding-left: 60px;
 }
-.profile main .add-car form label {
+.profile form label {
   position: relative;
   top: 28px;
   left: 10px;
@@ -149,10 +157,10 @@ html {
   font-weight: 500;
   font-size: 15px;
 }
-.profile main .add-car form #exterior-images, .profile main .add-car form #interior-images {
+.profile form #exterior-images, .profile form #interior-images {
   padding-left: 120px;
 }
-.profile main .add-car form input, .profile main .add-car form select {
+.profile form input, .profile form select {
   width: 100%;
   padding: 10px 10px;
   border-radius: 10px;
@@ -161,13 +169,13 @@ html {
   font-size: 15px;
   font-weight: 500;
 }
-.profile main .add-car form input:focus, .profile main .add-car form select:focus {
+.profile form input:focus, .profile form select:focus {
   outline: none;
 }
-.profile main .add-car form select {
+.profile form select {
   margin-top: 15px;
 }
-.profile main .add-car form .inner-container {
+.profile form .inner-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,15 +186,15 @@ html {
   margin-bottom: 15px;
   margin-top: -10px;
 }
-.profile main .add-car form .inner-container .left, .profile main .add-car form .inner-container .middle, .profile main .add-car form .inner-container .right {
+.profile form .inner-container .left, .profile form .inner-container .middle, .profile form .inner-container .right {
   width: 100%;
   margin: 10px 0px;
 }
-.profile main .add-car form .bottom {
+.profile form .bottom {
   width: 100%;
   margin: 10px 0px;
 }
-.profile main .add-car form .bottom textarea {
+.profile form .bottom textarea {
   width: 100%;
   height: 200px;
   padding: 10px 10px;
@@ -196,13 +204,13 @@ html {
   font-size: 15px;
   font-weight: 500;
 }
-.profile main .add-car form .bottom textarea:focus {
+.profile form .bottom textarea:focus {
   outline: none;
 }
-.profile main .add-car form .bottom select {
+.profile form .bottom select {
   margin-top: 15px;
 }
-.profile main .add-car form button {
+.profile form button {
   margin-top: 15px;
   padding: 10px;
   background-color: #c58aff;
@@ -213,10 +221,10 @@ html {
   cursor: pointer;
   font-size: 15px;
 }
-.profile main .add-car form button:hover {
+.profile form button:hover {
   color: #636363;
 }
-.profile main .add-car form button:focus {
+.profile form button:focus {
   outline: none;
 }
 .profile .lds-ring {
@@ -258,6 +266,10 @@ html {
 
 .hide {
   display: none;
+}
+
+.user-update-form {
+  padding: 10px !important;
 }
 
 /*# sourceMappingURL=profile.css.map */

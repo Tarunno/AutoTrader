@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import auth
 from .forms import *
 from app.models import *
 from .models import *
@@ -37,16 +38,50 @@ def signin(request):
     }
     return render(request, 'user/signin.html', context)
 
+
+@login_required
+def logout(request):
+    auth.logout(request)
+    return redirect('home')
+
+
 @login_required
 def profile(request, userID=-1):
     user = User.objects.get(id=userID)
-    cars = Car.objects.filter(seller=request.user).order_by('-end_at')[0:2]
-    customer = user.customer
+    cars = Car.objects.filter(seller=request.user).order_by('-end_at')
+    customer = Customer.objects.get(user=user)
+
+    on_auction, auction_ended = 0, 0
+    for car in cars:
+        if car.on_auction: on_auction += 1
+        else: auction_ended += 1
+
+    if request.method == 'POST':
+        copy = request.POST.copy()
+        image = request.FILES.copy()
+
+        if not copy['phone']:
+            copy['phone'] = customer.phone
+        if not copy['location']:
+            copy['location'] = customer.location
+        try:
+            if not image['image']:
+                image = customer.image
+        except:
+            pass
+
+        form = CustomerForm(copy, image, instance=customer)
+        if form.is_valid():
+            form.save()
+
+
     context = {
         'title': 'Profile',
         'user': user,
         'cars':cars,
-        'customer': customer
+        'customer': customer,
+        'on_auction': on_auction,
+        'auction_ended': auction_ended
     }
     return render(request, 'user/profile.html', context)
 

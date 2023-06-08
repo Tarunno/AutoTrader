@@ -6,63 +6,79 @@
 	<main>
 		<div class="user">
 			<div class="user-info">
-				<div class="image">
-					<img src="/user/{{customer.image}}/"/>
-				</div>
 				<div class="info">
-					<p class="name"> {{user.first_name}} {{user.last_name}} {{user.username}} </p>
-					<p class="email"> <i class="fas fa-envelope"> </i> {{user.email}} </p>
-					<p class="phone"> <i class="fas fa-phone"> </i> {{customer.phone}} </p>
-					<p class="locaion"> <i class="fas fa-map-marker-alt"> </i> {{customer.location}} </p>
+					<div class="image">
+						<img src="/user/{{customer.image}}/"/>
+					</div>
+					<div>
+						<p class="name"> {{user.first_name}} {{user.last_name}} {{user.username}} </p>
+						<p class="email"> <i class="fas fa-envelope"> </i> {{user.email}} </p>
+						<p class="phone"> <i class="fas fa-phone"> </i> {{customer.phone}} </p>
+						<p class="locaion"> <i class="fas fa-map-marker-alt"> </i> {{customer.location}} </p>
+					</div>
 				</div>
+				<form style="background-color: #f0e4fd; padding: 10px; border-radius: 10px;" autocomplete="off" method='POST' class="user-update-form" enctype="multipart/form-data">
+					<h4>Update info <span class="error"></span> </h4>
+					<label for="phone">Phone</label> <br>
+					<input id="phone" type="text" name="phone"> <br>
+					<label for="location">Location</label> <br>
+					<input id="location" type="text" name="location">
+					<input style="margin-top: 20px;" type="file" id="image" name="image" placeholder="Chosose user image">
+					{% csrf_token %}
+					<button type="submit"> Update </button>
+				</form>
 			</div>
 			<div class="auction-info">
 				<div class="info-cards">
 					<div class="auction-posts">
 						<h1 class="count">{{customer.auction_posted}}</h1>
-						<p class="count-name">Auction Posted</p>
+						<p class="count-name">Auction Posted (so far)</p>
 					</div>
 					<div class="auction-wins">
-						<h1 class="count">{{customer.auction_win}}</h1>
-						<p class="count-name">Auction Won</p>
+						<h1 class="count">{{on_auction}}</h1>
+						<p class="count-name">One Auction</p>
 					</div>
 					<div class="auction-loss">
-						<h1 class="count">{{customer.auction_loss}}</h1>
-						<p class="count-name">Auction Lost</p>
+						<h1 class="count">{{auction_ended}}</h1>
+						<p class="count-name">Auction Ended</p>
 					</div>
 				</div>
 				<div class="recent-threads">
 					<h4>Recent threads</h4>
-					{% for car in cars %}
-						{% with related_object=car.photo_set.first %}
-						<div style="margin-top:10px; display: flex; gap: 10px; font-size: 14px; width: 100%; justify-content: space-between; 
-							background-color: #f0e4fd; padding: 10px; border-radius: 10px;">
-							<div style="display: flex; justify-content: space-between; flex-direction: row;">
-								<div class="image" style="margin-right:10px; width:100px; height:60px; border-radius:10px; background: url(../{{related_object.image}}) no-repeat center center/cover">
+					<div class="recent-threads-list">
+						{% for car in cars %}
+							{% with related_object=car.photo_set.first %}
+							<div style="margin-top:10px; display: flex; gap: 10px; font-size: 14px; width: 100%; justify-content: space-between; 
+								background-color: #f0e4fd; padding: 10px; border-radius: 10px;">
+								<div style="display: flex; justify-content: space-between; flex-direction: row;">
+									<div class="image" style="margin-right:10px; width:100px; height:60px; border-radius:10px; background: url(../{{related_object.image}}) no-repeat center center/cover">
+									</div>
+									<div style="display: flex; flex-direction: column;">
+										<p><i id="tag-name" class="far fa-clock"></i> {{car.end_at|timeuntil}}</p>
+										<p><span id="tag-name">Bid</span> <span class="bid-log" id="{{car.id}}">${{car.bid}}</span></p>
+										{% if car.on_auction %}
+											<i style="width:120px; color: rgb(3, 78, 3); background-color:rgb(132, 255, 132); height: 10px;
+												padding: 10px; display: flex; align-items: center; 
+												justify-content: center; border-radius: 10px;" class="far fa-thumbs-up"> 
+												<span style="font-size:15px; font-family: Arial, sans-serif;"> On auction</span>
+											</i>
+										{% endif %}
+										{% if not car.on_auction %}
+											<i style="color: rgb(78, 3, 3); background-color:rgb(255, 177, 177); height: 10px;
+												padding: 10px; display: flex; align-items: center; 
+												justify-content: center; border-radius: 10px;" class="far fa-thumbs-down"> 
+												<span style="font-size:15px; font-family: Arial, sans-serif;"> Auction ended</span>
+											</i>
+										{% endif %}
+									</div>
 								</div>
-								<div style="display: flex; flex-direction: column;">
-									<p><i id="tag-name" class="far fa-clock"></i> {{car.end_at|timeuntil}}</p>
-									<p><span id="tag-name">Bid</span> <span class="bid-log" id="{{car.id}}">${{car.bid}}</span></p>
-									{% if car.on_auction %}
-										<i style="width:120px; color: rgb(3, 78, 3); background-color:rgb(132, 255, 132); height: 10px;
-											padding: 10px; display: flex; align-items: center; 
-											justify-content: center; border-radius: 10px;" class="far fa-thumbs-up">
-											<span style="font-size:15px; font-family: Arial, sans-serif;">On auction</span>
-										</i>
-									{% endif %}
-									{% if not car.on_auction %}
-										<i style="color: rgb(78, 3, 3); background-color:rgb(255, 132, 132); height: 10px;
-											padding: 10px; display: flex; align-items: center; 
-											justify-content: center; border-radius: 10px;" class="far fa-thumbs-down">
-											<span style="font-size:15px; font-family: Arial, sans-serif;">Auction ended</span>
-										</i>
-									{% endif %}
-								</div>
+								<p>{{car.make}} {{car.model}}</p>
+								<button act style="border: none; background-color: #ffffff; border-radius: 20px; height: fit-content; width: fit-content; 
+									padding: 8px 10px; cursor: pointer; align-self: center; color: crimson;"><i class="fas fa-trash-alt"></i></button>
 							</div>
-							<p>{{car.make}} {{car.model}}</p>
-						</div>
-						{% endwith %}
-					{% endfor %}
+							{% endwith %}
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 		</div>

@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.core import validators
 from app.models import Car, Photo
+from .models import *
 
 Numerics = ['0', '1', '2', '3', '4', '5', '6', '7', '9']
 
@@ -62,3 +63,9 @@ class UserSignin(forms.Form):
         username = self.cleaned_data.get('username')
         user = User.objects.get(username=username)
         login(request, user)
+
+
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = ['phone', 'location', 'image']

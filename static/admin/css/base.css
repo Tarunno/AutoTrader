@@ -1057,3 +1057,35 @@ html{
 .datetime{
     color: #9735fa!important;
 }
+.login .colM{
+    background-color: #fff;
+}
+.login #footer{
+    background-color: #fff;
+}
+.login .submit-row{
+    background-color: #fff!important;
+}
+.login #header #branding{
+    display: flex!important;
+    justify-content:space-between!important;
+}
+.login #id_username{
+    width: 350px!important;
+}
+.login #id_password{
+    width: 350px!important;
+}
+.login input{
+    width: 350px!important;
+}
+.login use{
+    display: none;
+}
+.login{
+    background-color: #fff!important;
+}
+.login #container{
+    border:none!important;
+    box-shadow: 6px 6px 20px lightgray;
+}

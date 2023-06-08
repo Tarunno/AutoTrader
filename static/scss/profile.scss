@@ -14,13 +14,13 @@
 			flex-direction: row;
 			gap: 15px;
 			.user-info{
-				width: 60%;
-				display: flex;
+				padding: 10px;
+				width: 40%;
 				border-radius: 10px;
 				background-color: $box-bg;
 				.image{
-					width: 30%;
-					padding: 10px;
+					width: 200px;
+					height: 200px;
 					img{
 						width: 100%;
 						height: 100%;
@@ -30,6 +30,9 @@
 				}
 				.info{
 					padding: 10px;
+					display: flex;
+					flex-direction: row;
+					gap: 20px;
 					p{
 						margin-bottom: 10px;
 					}
@@ -46,7 +49,7 @@
 				}
 			}
 			.auction-info{
-				width: 40%;
+				width: 60%;
 				background-color: $box-bg;
 				border-radius: 10px;
 				display: flex;
@@ -78,13 +81,18 @@
 					}
 				}
 				.recent-threads{
-					width: 100%;
-					display: flex;
-					justify-content: flex-start;
-					align-items: flex-start;
-					flex-direction: column;
-					border-radius: 5px;
-					padding: 5px;
+					padding: 0px 5px;
+					.recent-threads-list{
+						width: 100%;
+						height: 360px;
+						display: flex;
+						justify-content: flex-start;
+						align-items: flex-start;
+						flex-direction: column;
+						overflow-y: scroll;
+						overflow-x: hidden;
+						padding-right: 5px;
+					}
 					.count{
 						font-size: 55px;
 						color: $font-color-primary;
@@ -111,89 +119,89 @@
 					background-color: $brand-color;
 				}
 			}
-			form{
-				padding: 40px;
-				background-color: #f4f4f4;
-				border-radius: 10px;
+		}
+	}
+	form{
+		padding: 40px;
+		background-color: #f4f4f4;
+		border-radius: 10px;
+		width: 100%;
+		#end-at{
+			padding-left: 60px;
+		}
+		label{
+			position: relative;
+			top: 28px;
+			left: 10px;
+			color: $font-color-secondary;
+			transition: .3s;
+			font-weight: 500;
+			font-size: 15px;
+		}
+		#exterior-images, #interior-images{
+			padding-left: 120px;
+		}
+		input, select{
+			width: 100%;
+			padding: 10px 10px;
+			border-radius: 10px;
+			border: none;
+			background-color: white;
+			font-size: 15px;
+			font-weight: 500;
+			&:focus{
+				outline: none;
+			}
+		}
+		select{
+			margin-top: 15px;
+		}
+		.inner-container{
+			@include flex();
+			gap: 20px;
+			width: 100%;
+			margin-bottom: 15px;
+			margin-top: -10px;
+			.left,.middle, .right{
 				width: 100%;
-				#end-at{
-					padding-left: 60px;
+				margin: 10px 0px;
+			}
+		}
+		.bottom{
+			width: 100%;
+			margin: 10px 0px;
+			textarea{
+				width: 100%;
+				height: 200px;
+				padding: 10px 10px;
+				border-radius: 10px;
+				border: none;
+				background-color: white;
+				font-size: 15px;
+				font-weight: 500;
+				&:focus{
+					outline: none;
 				}
-				label{
-					position: relative;
-					top: 28px;
-					left: 10px;
-					color: $font-color-secondary;
-					transition: .3s;
-					font-weight: 500;
-					font-size: 15px;
-				}
-				#exterior-images, #interior-images{
-					padding-left: 120px;
-				}
-				input, select{
-					width: 100%;
-					padding: 10px 10px;
-					border-radius: 10px;
-					border: none;
-					background-color: white;
-					font-size: 15px;
-					font-weight: 500;
-					&:focus{
-						outline: none;
-					}
-				}
-				select{
-					margin-top: 15px;
-				}
-				.inner-container{
-					@include flex();
-					gap: 20px;
-					width: 100%;
-					margin-bottom: 15px;
-					margin-top: -10px;
-					.left,.middle, .right{
-						width: 100%;
-						margin: 10px 0px;
-					}
-				}
-				.bottom{
-					width: 100%;
-					margin: 10px 0px;
-					textarea{
-						width: 100%;
-						height: 200px;
-						padding: 10px 10px;
-						border-radius: 10px;
-						border: none;
-						background-color: white;
-						font-size: 15px;
-						font-weight: 500;
-						&:focus{
-							outline: none;
-						}
-					}
-					select{
-						margin-top: 15px;
-					}
-				}
-				button{
-					margin-top: 15px;
-					padding: 10px;
-					background-color: $brand-color;
-					color: $font-color-primary;
-					font-weight: 700;
-					border-radius: 10px;
-					border: none;
-					cursor: pointer;
-					font-size: 15px;
-					&:hover{
-						color: $font-color-secondary;
-					}
-					&:focus{
-						outline: none;
-					}
-				}
+			}
+			select{
+				margin-top: 15px;
+			}
+		}
+		button{
+			margin-top: 15px;
+			padding: 10px;
+			background-color: $brand-color;
+			color: $font-color-primary;
+			font-weight: 700;
+			border-radius: 10px;
+			border: none;
+			cursor: pointer;
+			font-size: 15px;
+			&:hover{
+				color: $font-color-secondary;
+			}
+			&:focus{
+				outline: none;
 			}
 		}
 	}
@@ -237,4 +245,7 @@
 }
 .hide{
 	display: none;
+}
+.user-update-form{
+	padding: 10px!important;
 }

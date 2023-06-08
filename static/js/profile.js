@@ -3,10 +3,14 @@ let label = document.querySelectorAll('.add-car .inner-container label')
 let form = document.querySelector('.add-car form')
 let errorMessage = document.querySelector('.error')
 
+let input_2 = document.querySelectorAll('.user-update-form input')
+let label_2 = document.querySelectorAll('.user-update-form label')
+
 let textarea = document.querySelectorAll('.add-car .bottom textarea')
 let label2 = document.querySelectorAll('.add-car .bottom label')
 
 handleInput(input, label)
+handleInput(input_2, label_2)
 handleTextArea(textarea, label2)
 
 function handleInput(Input, Label){
