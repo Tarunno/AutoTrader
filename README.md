@@ -1,6 +1,6 @@
 # AutoTrader | LIVE Auction 
 ### Live biding 
-I'm biding from a different incognito tab here. Wheneven other users are biding the price and timer tags blink yellow and live updates are shown.
+I'm biding from a different incognito tab here. Wheneven other users are biding the price and timer tags blink yellow and live updates are shown.<br/>
 ![](previews/live.gif)
 
 ### Placing a bid
