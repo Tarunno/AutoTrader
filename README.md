@@ -11,3 +11,6 @@ I'm biding from a different incognito tab here. Wheneven other users are biding 
 
 ### Car details
 ![](previews/car.gif)
+
+### Admin panel
+<img src="previews/admin.png" width="600"/>
