@@ -48,7 +48,7 @@
 					<div class="recent-threads-list">
 						{% for car in cars %}
 							{% with related_object=car.photo_set.first %}
-							<div style="margin-top:10px; display: flex; gap: 10px; font-size: 14px; width: 100%; justify-content: space-between; 
+							<a href="{% url 'car' car.id %}" style="display: block; width:100%;"><div style="margin-top:10px; display: flex; gap: 10px; font-size: 14px; width: 100%; justify-content: space-between; 
 								background-color: #f0e4fd; padding: 10px; border-radius: 10px;">
 								<div style="display: flex; justify-content: space-between; flex-direction: row;">
 									<div class="image" style="margin-right:10px; width:100px; height:60px; border-radius:10px; background: url(../{{related_object.image}}) no-repeat center center/cover">
@@ -76,6 +76,7 @@
 								<button act style="border: none; background-color: #ffffff; border-radius: 20px; height: fit-content; width: fit-content; 
 									padding: 8px 10px; cursor: pointer; align-self: center; color: crimson;"><i class="fas fa-trash-alt"></i></button>
 							</div>
+							</a>
 							{% endwith %}
 						{% endfor %}
 					</div>
@@ -93,6 +94,7 @@
 							<option value="Honda"> Honda </option>
 							<option value="Ford"> Ford </option>
 							<option value="Jeep"> Jeep </option>
+							<option value="Mercedes"> Mercedes </option>
 						</select><br>
 						<label for="model">Model</label> <br>
 						<input id="model" type="text" name="model"> <br>

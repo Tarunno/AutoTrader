@@ -3,8 +3,8 @@ from .models import Car, Photo
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ['make', 'model',  'body_style', 'engine', 'transmission']
-    list_filter = ['make', 'body_style', 'transmission']
+    list_display = ['make', 'model',  'body_style', 'engine', 'transmission', 'on_auction']
+    list_filter = ['on_auction', 'make', 'body_style']
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):

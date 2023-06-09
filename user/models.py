@@ -22,3 +22,5 @@ class Customer(models.Model):
             output_size = (400, 400)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+            

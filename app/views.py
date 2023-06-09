@@ -12,11 +12,23 @@ def home(request):
     for i in removed_car:
         i.on_auction = False
         i.save()
+
+    if request.GET.get('make'):
+        if request.GET.get('make') != 'All':
+            cars = cars.filter(make=request.GET.get('make'))
+    if request.GET.get('transmission'):
+        if request.GET.get('transmission') != 'All':
+            cars = cars.filter(transmission=request.GET.get('transmission'))
+    if request.GET.get('body_style'):
+        if request.GET.get('body_style') != 'All':
+            cars = cars.filter(body_style=request.GET.get('body_style'))
+
     images = []
     for car in cars:
         image = Photo.objects.filter(car=car).first()
         images.append(image)
         car.time = (car.end_at - current_datetime).total_seconds()
+
     context = {
         'cars': cars,
     }
@@ -50,6 +62,8 @@ def place_bid(request, car_id):
         i.save()
     if request.method == "POST":
         if car.on_auction:
+            if car.seller == request.user:
+                return JsonResponse({'error': "Can't bid your own car!"}, safe=False)
             bid_value = request.POST.get('bid_value')
             car.bid = bid_value
             car.save()

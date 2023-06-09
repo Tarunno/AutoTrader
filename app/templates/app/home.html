@@ -10,31 +10,33 @@
 				<ul>
 					<li>Make <i class="fas fa-chevron-down"></i>
 						<ul>
-							<li>All</li>
-							<li>Toyota</li>
-							<li>Ford</li>
-							<li>Honda</li>
-							<li>Jeep</li>
+							<a href="{% url 'home' %}?make=All"><li>All</li></a>
+							<a href="{% url 'home' %}?make=Toyota"><li>Toyota</li></a>
+							<a href="{% url 'home' %}?make=Ford"><li>Ford</li></a>
+							<a href="{% url 'home' %}?make=Honda"><li>Honda</li></a>
+							<a href="{% url 'home' %}?make=Jeep"><li>Jeep</li></a>
+							<a href="{% url 'home' %}?make=Mercedes"><li>Mercedes</li></a>
 						</ul>
 					</li>
 					<li>Transmission <i class="fas fa-chevron-down"></i>
 						<ul>
-							<li>All</li>
-							<li>Auto</li>
-							<li>Menual</li>
+							<a href="{% url 'home' %}?transmission=All"><li>All</li></a>
+							<a href="{% url 'home' %}?transmission=Automatic"><li>Auto</li></a>
+							<a href="{% url 'home' %}?transmission=Manual"><li>Menual</li></a>
+							<a href="{% url 'home' %}?transmission=Automatic-Menual"><li>Automatic with Menual</li></a>
 						</ul>
 					</li>
 					<li>Body Style <i class="fas fa-chevron-down"></i>
 						<ul>
-							<li>All</li>
-							<li>Coupe</li>
-							<li>Convertible</li>
-							<li>Sedan</li>
-							<li>Hatchback</li>
-							<li>SUV/CUV</li>
-							<li>Truck</li>
-							<li>Van/Minivan</li>
-							<li>Wagon</li>
+							<a href="{% url 'home' %}?body_style=All"><li>All</li></a>
+							<a href="{% url 'home' %}?body_style=Coupe"><li>Coupe</li></a>
+							<a href="{% url 'home' %}?body_style=Convertible"><li>Convertible</li></a>
+							<a href="{% url 'home' %}?body_style=Sedan"><li>Sedan</li></a>
+							<a href="{% url 'home' %}?body_style=Hatchback"><li>Hatchback</li></a>
+							<a href="{% url 'home' %}?body_style=SUV/CUV"><li>SUV/CUV</li></a>
+							<a href="{% url 'home' %}?body_style=Truck"><li>Truck</li></a>
+							<a href="{% url 'home' %}?body_style=Van/Minivan"><li>Van/Minivan</li></a>
+							<a href="{% url 'home' %}?body_style=Wagon"><li>Wagon</li></a>
 						</ul>
 					</li>
 				</ul>
@@ -113,7 +115,7 @@
 								tags[index].style.background = 'rgba(200, 30, 30, .8)'
 							}
 							else{
-								tags[index].style.background = 'rgba(0, 0, 0, 0.5);'
+								tags[index].style.background = 'rgba(0, 0, 0, 0.5)'
 							}
 
 							totalSeconds--;
@@ -132,9 +134,16 @@
 					console.log('Message Received from Server', event)
 					const data = JSON.parse(event.data)
 					let bids = document.querySelectorAll('.bid-log')
-					bids.forEach((bid) => {
+					bids.forEach((bid, index) => {
 						if(bid.id == data['msg']['bid_id']){
 							bid.innerText = '$' + data['msg']['bid_value']
+							tags[index].style.background = '#f3f700'
+							tags[index].style.transition = '0.5s'
+							function bided(){
+								tags[index].style.background = 'rgba(0, 0, 0, 0.5)'
+							}
+							setTimeout(bided, 1000)
+							clearTimeout(bided)
 						}
 					})
 				}

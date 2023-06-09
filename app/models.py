@@ -8,7 +8,8 @@ class Car(models.Model):
             ('Toyota', 'Toyota'),
             ('Ford', 'Ford'),
             ('Honda', 'Honda'),
-            ('Jeep', 'Jeep')]
+            ('Jeep', 'Jeep'),
+            ('Mercedes', 'Mercedes')]
     BODY_STYLE = [('Coupe', 'Coupe'),
                   ('Convertible', 'Convertible'),
                   ('Sedan', 'Sedan'),
@@ -51,7 +52,7 @@ class Car(models.Model):
     seller_note = models.CharField(max_length=300, null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     end_at = models.DateTimeField(default=timezone.now, null=True, blank=True)
-    bid = models.IntegerField(default=0, null=True, blank=True)
+    bid = models.IntegerField(default=1000, null=True, blank=True)
     on_auction = models.BooleanField(default=True, null=True, blank=True)
 
     def __str__(self):
