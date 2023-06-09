@@ -13,4 +13,4 @@ I'm biding from a different incognito tab here. Wheneven other users are biding 
 ![](previews/car.gif)
 
 ### Admin panel
-<img src="previews/admin.png" width="600"/>
+<img src="previews/admin_panel.png" width="600"/>
