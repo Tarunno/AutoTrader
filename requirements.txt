@@ -1,0 +1,10 @@
+channels==3.0.3
+DateTime==4.3
+Django==4.2
+django-ckeditor==6.0.0
+django-cleanup==5.1.0
+django-crispy-forms==1.9.2
+django-dotenv==1.4.2
+django-filter==2.4.0
+django-js-asset==2.0.0
+Pillow==7.2.0
